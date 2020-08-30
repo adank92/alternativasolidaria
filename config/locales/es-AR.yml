@@ -7,6 +7,20 @@ es-AR:
         restrict_dependent_destroy:
           has_one: No se puede eliminar el registro porque existe un %{record} dependiente
           has_many: No se puede eliminar el registro porque existen %{record} dependientes
+    models:
+      user: Usuario
+    attributes:
+      user:
+        first_name: Nombre
+        last_name: Apellido
+        email: Correo electrónico
+        province_id: Provincia
+        locality: Localidad
+        locality_id: Localidad
+        address: Dirección
+        phone: Número de teléfono
+        password: Contraseña
+        password_confirmation: Confirmar contraseña
   date:
     abbr_day_names:
     - dom
