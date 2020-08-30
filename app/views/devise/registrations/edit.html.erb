@@ -6,8 +6,13 @@
     <%= render "devise/shared/error_messages", resource: resource %>
 
     <div class="input-group">
-      <%= f.label :name, class:"label" %>
-      <%= f.text_field :name, class:"input" %>
+      <%= f.label :first_name, class:"label" %>
+      <%= f.text_field :first_name, class:"input" %>
+    </div>
+
+    <div class="input-group">
+      <%= f.label :last_name, class:"label" %>
+      <%= f.text_field :last_name, class:"input" %>
     </div>
 
     <div class="input-group">

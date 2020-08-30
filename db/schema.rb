@@ -10,7 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_30_035037) do
+ActiveRecord::Schema.define(version: 2020_08_30_052004) do
+
+  create_table "departments", force: :cascade do |t|
+    t.string "name"
+    t.integer "province_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["province_id"], name: "index_departments_on_province_id"
+  end
+
+  create_table "localities", force: :cascade do |t|
+    t.string "name"
+    t.integer "department_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["department_id"], name: "index_localities_on_department_id"
+  end
+
+  create_table "provinces", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +45,15 @@ ActiveRecord::Schema.define(version: 2020_08_30_035037) do
     t.boolean "admin", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "address"
+    t.string "phone"
+    t.integer "locality_id", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["locality_id"], name: "index_users_on_locality_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "departments", "provinces"
+  add_foreign_key "localities", "departments"
+  add_foreign_key "users", "localities"
 end
