@@ -1,7 +1,7 @@
 <div id="register-page">
 <% content_for :devise_form do %>
   <h2 class="pt-4 mb-8 text-4xl font-bold heading">Registro colaboradores</h2>
-  <h4 class="mb-5">
+  <h3 class="mb-5">
     ¡Gracias por sumarte a Alternativa Solidaria!
     Por favor completá el formulario y en breve nos contactaremos con vos.
     Muchas gracias!
@@ -24,17 +24,21 @@
     </div>
     <div data-controller="province" data-province-locations-url="<%= localities_path %>">
       <div class="form-row">
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-3">
           <%= f.label :province_id, class: 'label' %>
           <%= select_tag :province_id, options_from_collection_for_select(Province.all, :id, :name), class: 'form-control', data: { target: 'province.provinceId', action: 'province#findLocalities' } %>
         </div>
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-3">
           <%= f.label :locality_id, class:"label" %>
           <%= f.collection_select :locality_id, Locality.all, :id, :name, {}, class: 'form-control', data: { target: 'province.localityId' } %>
         </div>
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-3">
           <%= f.label :roles, class: "label" %>
           <%= f.collection_check_boxes :roles, User.roles.humans, :first, :second, {}, class: 'form-control' %>
+        </div>
+        <div class="form-group col-md-3">
+          <%= f.label :available_days, class: "label" %>
+          <%= f.collection_check_boxes :available_days, User.available_days.humans, :first, :second, {}, class: 'form-control' %>
         </div>
       </div>
     </div>

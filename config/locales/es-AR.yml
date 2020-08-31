@@ -19,6 +19,7 @@ es-AR:
         locality_id: Localidad
         address: Dirección
         phone: Número de teléfono
+        available_days: Días para colaborar
         password: Contraseña
         password_confirmation: Confirmar contraseña
   date:
@@ -236,3 +237,6 @@ es-AR:
       roles:
         chef: 'Cocinero'
         delivery: 'Repartidor'
+      available_days:
+        saturday: 'Sábado'
+        sunday: 'Domingo'

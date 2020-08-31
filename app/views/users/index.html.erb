@@ -33,6 +33,9 @@
         <th scope="col">
           Email
         </th>
+        <th scope="col">
+          Días
+        </th>
       </tr>
     </thead>
     <tbody>
@@ -64,6 +67,9 @@
           </td>
           <td>
             <%= user.email %>
+          </td>
+          <td>
+            <%= user.available_days.to_human.join("/") %>
           </td>
         </tr>
       <% end %>

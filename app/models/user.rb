@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   flag :roles, [:chef, :delivery]
+  flag :available_days, [:saturday, :sunday]
 
   belongs_to :locality
   has_one :department, through: :locality
