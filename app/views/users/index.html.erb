@@ -1,62 +1,60 @@
-<div class="grid grid-cols-1 gap-4">
-  <table class="table-auto">
-    <thead>
+<table class="table table-striped table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">
+        Nombre
+      </th>
+      <th scope="col">
+        Apellido
+      </th>
+      <th scope="col">
+        Provincia
+      </th>
+      <th scope="col">
+        Zona/Comuna
+      </th>
+      <th scope="col">
+        Localidad
+      </th>
+      <th scope="col">
+        Dirección
+      </th>
+      <th scope="col">
+        Celular
+      </th>
+      <th scope="col">
+        Email
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
       <tr>
-        <th class="px-4 py-2">
-          Nombre
-        </th>
-        <th class="px-4 py-2">
-          Apellido
-        </th>
-        <th class="px-4 py-2">
-          Provincia
-        </th>
-        <th class="px-4 py-2">
-          Zona/Comuna
-        </th>
-        <th class="px-4 py-2">
-          Localidad
-        </th>
-        <th class="px-4 py-2">
-          Dirección
-        </th>
-        <th class="px-4 py-2">
-          Celular
-        </th>
-        <th class="px-4 py-2">
-          Email
-        </th>
+        <td>
+          <%= user.first_name %>
+        </td>
+        <td>
+          <%= user.last_name %>
+        </td>
+        <td>
+          <%= user.province.name %>
+        </td>
+        <td>
+          <%= user.department.name %>
+        </td>
+        <td>
+          <%= user.locality.name %>
+        </td>
+        <td>
+          <%= user.address %>
+        </td>
+        <td>
+          <%= user.phone %>
+        </td>
+        <td>
+          <%= user.email %>
+        </td>
       </tr>
-    </thead>
-    <tbody>
-      <% @users.each_with_index do |user, i| %>
-        <tr class="<%= 'bg-gray-100' if i % 2 == 0 %>">
-          <td class="border px-4 py-2">
-            <%= user.first_name %>
-          </td>
-          <td class="border px-4 py-2">
-            <%= user.last_name %>
-          </td>
-          <td class="border px-4 py-2">
-            <%= user.province.name %>
-          </td>
-          <td class="border px-4 py-2">
-            <%= user.department.name %>
-          </td>
-          <td class="border px-4 py-2">
-            <%= user.locality.name %>
-          </td>
-          <td class="border px-4 py-2">
-            <%= user.address %>
-          </td>
-          <td class="border px-4 py-2">
-            <%= user.phone %>
-          </td>
-          <td class="border px-4 py-2">
-            <%= user.email %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+    <% end %>
+  </tbody>
+</table>
