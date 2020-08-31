@@ -1,60 +1,75 @@
-<table class="table table-striped table-bordered">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">
-        Nombre
-      </th>
-      <th scope="col">
-        Apellido
-      </th>
-      <th scope="col">
-        Provincia
-      </th>
-      <th scope="col">
-        Zona/Comuna
-      </th>
-      <th scope="col">
-        Localidad
-      </th>
-      <th scope="col">
-        Dirección
-      </th>
-      <th scope="col">
-        Celular
-      </th>
-      <th scope="col">
-        Email
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %>
+<div class="row justify-content-md-center">
+  <%= will_paginate @users %>
+</div>
+
+<div class="row">
+  <table class="table table-striped table-bordered">
+    <thead class="thead-dark">
       <tr>
-        <td>
-          <%= user.first_name %>
-        </td>
-        <td>
-          <%= user.last_name %>
-        </td>
-        <td>
-          <%= user.province.name %>
-        </td>
-        <td>
-          <%= user.department.name %>
-        </td>
-        <td>
-          <%= user.locality.name %>
-        </td>
-        <td>
-          <%= user.address %>
-        </td>
-        <td>
-          <%= user.phone %>
-        </td>
-        <td>
-          <%= user.email %>
-        </td>
+        <th scope="col">
+          Rol
+        </th>
+        <th scope="col">
+          Nombre
+        </th>
+        <th scope="col">
+          Apellido
+        </th>
+        <th scope="col">
+          Provincia
+        </th>
+        <th scope="col">
+          Zona/Comuna
+        </th>
+        <th scope="col">
+          Localidad
+        </th>
+        <th scope="col">
+          Dirección
+        </th>
+        <th scope="col">
+          Celular
+        </th>
+        <th scope="col">
+          Email
+        </th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td>
+            <%= user.roles.to_human.join("/") %>
+          </td>
+          <td>
+            <%= user.first_name %>
+          </td>
+          <td>
+            <%= user.last_name %>
+          </td>
+          <td>
+            <%= user.province.name %>
+          </td>
+          <td>
+            <%= user.department.name %>
+          </td>
+          <td>
+            <%= user.locality.name %>
+          </td>
+          <td>
+            <%= user.address %>
+          </td>
+          <td>
+            <%= user.phone %>
+          </td>
+          <td>
+            <%= user.email %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<div class="row justify-content-md-center">
+  <%= will_paginate @users %>
+</div>

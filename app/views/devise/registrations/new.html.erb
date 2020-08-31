@@ -24,13 +24,17 @@
     </div>
     <div data-controller="province" data-province-locations-url="<%= localities_path %>">
       <div class="form-row">
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-4">
           <%= f.label :province_id, class: 'label' %>
           <%= select_tag :province_id, options_from_collection_for_select(Province.all, :id, :name), class: 'form-control', data: { target: 'province.provinceId', action: 'province#findLocalities' } %>
         </div>
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-4">
           <%= f.label :locality_id, class:"label" %>
           <%= f.collection_select :locality_id, Locality.all, :id, :name, {}, class: 'form-control', data: { target: 'province.localityId' } %>
+        </div>
+        <div class="form-group col-md-4">
+          <%= f.label :roles, class: "label" %>
+          <%= f.collection_check_boxes :roles, User.roles.humans, :first, :second, {}, class: 'form-control' %>
         </div>
       </div>
     </div>

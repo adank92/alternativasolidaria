@@ -231,3 +231,8 @@ es-AR:
       long: "%A, %d de %B de %Y a las %I:%M %p"
       short: "%d de %b a las %H:%M hrs"
     pm: pm
+  active_flag:
+    user:
+      roles:
+        chef: 'Cocinero'
+        delivery: 'Repartidor'
