@@ -18,16 +18,15 @@
     <%= javascript_pack_tag  'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-      <h5 class="my-0 mr-md-auto font-weight-normal">Alternativa Solidaria</h5>
+  <body class="<%= current_page?(new_user_registration_path) ? 'sign_up': ''   %>">
+    <div class="d-flex flex-column flex-md-row align-items-center p-1 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+      <h5 class="my-0 mr-md-auto font-weight-normal"><img style="height: 75px;" src='<%= asset_path("logo.jpeg") %>' />Alternativa Solidaria</h5>
       <nav class="my-2 my-md-0 mr-md-3">
-        <a class="p-2 text-dark" href="#">Features</a>
-        <a class="p-2 text-dark" href="#">Enterprise</a>
-        <a class="p-2 text-dark" href="#">Support</a>
-        <a class="p-2 text-dark" href="#">Pricing</a>
+        <a class="p-2 text-dark" href="#">Quienes Somos</a>
+        <a class="p-2 text-dark" href="#">Como Funcionamos</a>
+        <a class="p-2 text-dark" href="#">Recetas</a>
       </nav>
-      <a class="btn btn-outline-primary" href="#">Sign up</a>
+      <a class="btn btn-outline-primary" href="/users/sign_up">Sumate</a>
     </div>
 
     <div class="container">
