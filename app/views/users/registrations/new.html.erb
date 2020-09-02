@@ -1,8 +1,10 @@
+<% content_for :body_classes, 'sign_up' %>
+
 <div id="register-page">
   <% content_for :devise_form do %>
     <h3 class="pt-4 mb-8 text-4xl font-bold heading">Registro colaboradores</h2>
     <h5 class="mb-5">
-      ¡Gracias por sumarte a Alternativa Solidaria!
+      ¡Gracias por tu interes en sumarte a Alternativa Solidaria!
       Por favor completá el formulario y en breve nos contactaremos con vos.
       Muchas gracias!
     </h3>
@@ -54,11 +56,16 @@
             <% end %>
         </div>
         <div class="form-group col-md-6">
-          <div>Dias</div>
-          <%= f.collection_check_boxes :available_days, User.available_days.humans, :first, :second do |b| %>
-            <div class="form-check">
-              <%=  b.label(class:"form-check-label") { b.check_box(class:"form-check-input") + b.text}  %>
-            </div>
+          <div>Fines de semana con disponibilidad</div>
+          <% @current_available_weeks.each do |aw| %>
+            <%= f.fields_for :available_weeks, aw do |aw_form| %>
+              <div class="form-check">
+                <%= aw_form.label :week_id, class: "form-check-label" do %>
+                  <%= aw_form.check_box :week_id, { class:"form-check-input" }, aw.week_id, nil %>
+                  <%= aw.name %>
+                <% end %>
+              </div>
+            <% end %>
           <% end %>
         </div>
       </div>
