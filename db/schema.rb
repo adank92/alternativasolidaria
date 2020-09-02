@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_31_044941) do
+ActiveRecord::Schema.define(version: 2020_09_01_234836) do
+
+  create_table "available_weeks", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "week_id", null: false
+    t.index ["user_id"], name: "index_available_weeks_on_user_id"
+    t.index ["week_id"], name: "index_available_weeks_on_week_id"
+  end
 
   create_table "departments", force: :cascade do |t|
     t.string "name"
@@ -49,12 +58,21 @@ ActiveRecord::Schema.define(version: 2020_08_31_044941) do
     t.string "phone"
     t.integer "locality_id", null: false
     t.integer "roles", limit: 8, default: 0, null: false
-    t.integer "available_days", limit: 8, default: 0, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["locality_id"], name: "index_users_on_locality_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "weeks", force: :cascade do |t|
+    t.integer "number"
+    t.integer "year"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["number", "year"], name: "index_weeks_on_number_and_year", unique: true
+  end
+
+  add_foreign_key "available_weeks", "users"
+  add_foreign_key "available_weeks", "weeks"
   add_foreign_key "departments", "provinces"
   add_foreign_key "localities", "departments"
   add_foreign_key "users", "localities"

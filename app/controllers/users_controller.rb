@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
   def index
-    @users = User.paginate(page: params[:page])
+    @users = User.available_for_week(session[:week]).paginate(page: params[:page])
   end
 end

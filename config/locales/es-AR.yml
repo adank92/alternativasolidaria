@@ -56,7 +56,7 @@ es-AR:
     formats:
       default: "%d/%m/%Y"
       long: "%A, %d de %B de %Y"
-      short: "%d de %b"
+      short: "%a %d de %b"
     month_names:
     - 
     - enero
