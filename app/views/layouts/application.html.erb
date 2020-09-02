@@ -19,7 +19,7 @@
   </head>
 
   <body class="<%= current_page?(new_user_registration_path) ? 'sign_up': ''   %>">
-    <div class="d-flex flex-column flex-md-row align-items-center p-1 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+    <div class="d-flex flex-column flex-md-row align-items-center p-1 px-md-4 bg-white shadow-sm">
       <h5 class="my-0 mr-md-auto font-weight-normal"><img style="height: 75px;" src='<%= asset_path("logo.jpeg") %>' />Alternativa Solidaria</h5>
       <nav class="my-2 my-md-0 mr-md-3">
         <a class="p-2 text-dark" href="#">Quienes Somos</a>
@@ -28,6 +28,7 @@
       </nav>
       <a class="btn btn-outline-primary" href="/users/sign_up">Sumate</a>
     </div>
+    <div id="rainbow-bar"></div>
 
     <div class="container">
       <%= content_for?(:content) ? yield(:content) : yield %>
