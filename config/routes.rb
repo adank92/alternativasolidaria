@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   }
   resources :users, only: [:index]
   resources :localities, only: [:index]
+  resources :recipes, onlye: [:index]
 end
