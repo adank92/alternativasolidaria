@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 buenos_aires = Province.create(name: "Buenos Aires")
-caba = Province.create(name: "Ciudad Autónoma de Buenos Aires")
+caba = Province.create(name: "CABA")
 
 comuna = Department.create(name: "Comuna 1", province: caba)
 ['Retiro', 'San Nicolás', 'Puerto Madero', 'San Telmo', 'Monserrat', 'Constitución'].each do |name|

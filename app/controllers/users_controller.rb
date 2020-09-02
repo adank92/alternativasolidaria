@@ -1,5 +1,15 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
+  before_action :authenticate_admin!
+
   def index
-    @users = User.available_for_week(session[:week]).paginate(page: params[:page])
+    @week = session[:week]
+    @users = User.available_for_week(@week).paginate(page: params[:page])
+  end
+
+  private
+
+  def authenticate_admin!
+    redirect_to root_path unless current_user.admin?
   end
 end

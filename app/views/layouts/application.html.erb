@@ -25,6 +25,9 @@
         <a class="p-2 text-dark" href="#">Quienes Somos</a>
         <a class="p-2 text-dark" href="#">Como Funcionamos</a>
         <a class="p-2 text-dark" href="#">Recetas</a>
+        <% if current_user&.admin? %>
+          <%= link_to "Colaboradores", users_path, class: 'p-2 text-dark' %>
+        <% end %>
       </nav>
       <div class="btn-toolbar" role="toolbar" aria-label="Botones de acceso">
         <% if user_signed_in? %>
@@ -38,6 +41,15 @@
     </div>
 
     <div class="container">
+      <% flash.each do |key, value| %>
+        <div class="<%= flash_class(key) %> alert-dismissible fade show" role="alert">
+          <%= value %>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      <% end %>
+
       <%= content_for?(:content) ? yield(:content) : yield %>
     </div>
   </body>
