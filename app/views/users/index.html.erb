@@ -55,9 +55,11 @@
       <% @records.each do |user| %>
         <tr>
           <td>
+            <div class="d-flex">
             <% user.roles.each do |role| %>
-              <i class="<%= role_icon(role) %>" style="font-size: 1.5em"></i>
+              <i class="<%= role_icon(role) %> mr-1" style="font-size: 1.5em"></i>
             <% end %>
+            </div>
           </td>
           <td>
             <%= user.first_name %>
