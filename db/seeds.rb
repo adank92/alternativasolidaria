@@ -6,8 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-buenos_aires = Province.create(name: "Buenos Aires")
+buenos_aires = Province.create(name: "GBA")
 caba = Province.create(name: "CABA")
+
+comuna = Department.create(name: "Zona norte 1", province: buenos_aires)
+Locality.create(name: 'Boulogne', department: comuna)
 
 comuna = Department.create(name: "Comuna 1", province: caba)
 ['Retiro', 'San Nicolás', 'Puerto Madero', 'San Telmo', 'Monserrat', 'Constitución'].each do |name|
