@@ -57,7 +57,7 @@
           <td>
             <div class="d-flex">
             <% user.roles.each_with_index do |role,index| %>
-              <i class="<%= role_icon(role) %> <%= "mr-1" if index.equal?(0) %>" style="font-size: 1.5em"></i>
+               <%= role_icon(role, index) %>
             <% end %>
             </div>
           </td>
