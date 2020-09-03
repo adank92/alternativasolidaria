@@ -4,6 +4,10 @@
                    prompt: "Todas las semanas", data: { reflex: 'change->Tabular#change_week', reflex_root: '#user-listing' } %>
     <%= select_tag :role, options_from_collection_for_select(User.roles.humans, :first, :second, @role),
                    prompt: "Todos los roles", data: { reflex: 'change->Tabular#change_role', reflex_root: '#user-listing' } %>
+    <%= select_tag :province, options_from_collection_for_select(Province.all, :id, :name, @province),
+    prompt: "Todas las Provincias", data: { reflex: 'change->Tabular#change_province', reflex_root: '#user-listing' } %>               
+    <%= select_tag :locality, options_from_collection_for_select(Locality.all, :id, :name, @locality),
+    prompt: "Todas las Localidades", data: { reflex: 'change->Tabular#change_locality', reflex_root: '#user-listing' } %>
   </div>
 </div>
 

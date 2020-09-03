@@ -14,6 +14,8 @@ class User < ApplicationRecord
   validates_presence_of :first_name, :last_name, :roles
   validates :phone, numericality: true
 
-  scope :available_for_week, ->(week) { includes(:weeks).where(weeks: { id: week }) if week.present? }
-  scope :with_role, ->(role) { where_roles(role) if role.present? }
+  scope :available_for_week, ->(week) { joins(:weeks).where(weeks: { id: week }) if week.present? }
+  scope :where_role, ->(role) { where_roles(role) if role.present? }
+  scope :where_locality, ->(locality) { where(locality: locality) if locality.present? }
+  scope :where_province, ->(province) { joins(:province).where(provinces: { id: province }) if province.present? }
 end
