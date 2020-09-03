@@ -31,7 +31,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'devise', '~> 4.7', '>= 4.7.2'
 gem 'awesome_print'
 gem "stimulus_reflex", "~> 3.2"
-gem 'will_paginate-bootstrap4'
+gem 'pagy'
 gem 'active_flag'
 gem "bootstrap_form", "~> 4.0"
 

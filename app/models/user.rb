@@ -15,4 +15,5 @@ class User < ApplicationRecord
   validates :phone, numericality: true
 
   scope :available_for_week, ->(week) { includes(:weeks).where(weeks: { id: week }) if week.present? }
+  scope :with_role, ->(role) { where_roles(role) if role.present? }
 end
