@@ -22,6 +22,7 @@ es-AR:
         available_days: Días para colaborar
         password: Contraseña
         password_confirmation: Confirmar contraseña
+        current_password: Contraseña actual
   date:
     abbr_day_names:
     - dom

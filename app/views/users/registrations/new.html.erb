@@ -2,12 +2,12 @@
 
 <div id="register-page">
   <% content_for :devise_form do %>
-    <h3 class="pt-4 mb-8 text-4xl font-bold heading">Registro colaboradores</h2>
+    <h3 class="pt-4 mb-8 text-4xl font-bold heading">Registro colaboradores</h3>
     <h5 class="mb-5">
       ¡Gracias por tu interes en sumarte a Alternativa Solidaria!
       Por favor completá el formulario y en breve nos contactaremos con vos.
       Muchas gracias!
-    </h3>
+    </h5>
     <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <div class="form-row">
         <div class="form-group col-md-4">
@@ -24,10 +24,10 @@
         <div class="form-row">
           <div class="form-group col-md-6">
             <%= f.label :province_id, class: 'label' %>
-            <%= select_tag :province_id, options_from_collection_for_select(Province.all, :id, :name), class: 'form-control', data: { target: 'province.provinceId', action: 'province#findLocalities' } %>
+            <%= select_tag :province_id, options_from_collection_for_select(Province.all, :id, :name, resource.province&.id), class: 'form-control', data: { target: 'province.provinceId', action: 'province#findLocalities' } %>
           </div>
           <div class="form-group col-md-6">
-            <%= f.collection_select :locality_id, Locality.all, :id, :name, {}, class: 'form-control', data: { target: 'province.localityId' } %>
+            <%= f.collection_select :locality_id, Province.first.localities, :id, :name, {}, class: 'form-control', data: { target: 'province.localityId' } %>
           </div>
         </div>
       </div>
@@ -49,11 +49,7 @@
         </div>
         <div class="form-group col-md-6">
           <%= f.label :available_weeks, "Fines de semana con disponibilidad" %>
-          <% @current_available_weeks.each do |aw| %>
-            <%= f.fields_for :available_weeks, aw do |aw_form| %>
-              <%= aw_form.check_box :week_id, label: aw.name %>
-            <% end %>
-          <% end %>
+          <%= f.collection_check_boxes :week_ids, Week.for_current_month, :id, :name, hide_label: true %>
         </div>
       </div>
       <div class="form-row">
