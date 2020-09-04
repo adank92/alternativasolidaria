@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :set_user_filters
 
   def index
-    @pagy, @records = pagy(User.available_for_week(@week).where_role(@role).where_locality(@locality).where_province(@province), page: @page)
+    @pagy, @records = pagy(find_users, page: @page)
   end
 
   private
@@ -14,10 +14,19 @@ class UsersController < ApplicationController
   end
 
   def set_user_filters
-    @week = session[:week]
-    @role = session[:role]
-    @locality = session[:locality]
-    @province = session[:province]
+    @status = session[:status].to_s
+    @week = session[:week].to_s
+    @role = session[:role].to_s
+    @province = session[:province].to_s
+    @department = session[:department].to_s
+    @departments = session[:departments] || Province.first.departments
+    @locality = session[:locality].to_s
+    @localities = session[:localities] || Province.first.localities
     @page = (session[:page] || 1).to_i
+  end
+
+  def find_users
+    User.where_status(@status).available_for_week(@week).where_role(@role).where_province(@province)
+        .where_department(@department).where_locality(@locality)
   end
 end

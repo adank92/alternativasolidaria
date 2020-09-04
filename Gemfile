@@ -30,7 +30,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'devise', '~> 4.7', '>= 4.7.2'
 gem 'awesome_print'
-gem "stimulus_reflex", "~> 3.2"
+gem "stimulus_reflex", :git => 'https://github.com/hopsoft/stimulus_reflex.git', :tag => 'v3.3.0.pre3'
 gem 'pagy'
 gem 'active_flag'
 gem "bootstrap_form", "~> 4.0"

@@ -23,6 +23,12 @@ es-AR:
         password: Contraseña
         password_confirmation: Confirmar contraseña
         current_password: Contraseña actual
+    enums:
+      user:
+        status:
+          fresh: Nuevo
+          active: Activo
+          inactive: Inactivo
   date:
     abbr_day_names:
     - dom
