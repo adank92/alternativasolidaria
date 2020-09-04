@@ -7,13 +7,13 @@
                      class:'form-control form-control-sm mr-2', data: { reflex: 'change->Tabular#change_status' } %>
       <%= select_tag :week, options_for_reflex_select(Week.for_current_month, :id, :name, @week, prompt: 'Todas las semanas'),
                       class:'form-control form-control-sm mr-2', data: { reflex: 'change->Tabular#change_week' } %>
-      <%= select_tag :role, options_for_reflex_select(User.roles.humans, :first, :second, @role, prompt: 'Todas los roles'),
+      <%= select_tag :role, options_for_reflex_select(User.roles.humans, :first, :second, @role, prompt: 'Todos los roles'),
                      class:'form-control form-control-sm mr-2', data: { reflex: 'change->Tabular#change_role' } %>
       <%= select_tag :province, options_for_reflex_select(Province.all, :id, :name, @province, prompt: "Todas las provincias"),
                      class:'form-control form-control-sm mr-2', data: { reflex: 'change->Tabular#change_province' } %>
       <%= select_tag :province, options_for_reflex_select(@departments, :id, :name, @department, prompt: "Todas las zonas"),
                      class:'form-control form-control-sm mr-2', data: { reflex: 'change->Tabular#change_department' } %>
-      <%= select_tag :locality, options_for_reflex_select(@localities, :id, :name, @locality, prompt: "Todas las Localidades"),
+      <%= select_tag :locality, options_for_reflex_select(@localities, :id, :name, @locality, prompt: "Todas las localidades"),
                      class:'form-control form-control-sm', data: { reflex: 'change->Tabular#change_locality' } %>
     </div>
   </div>
@@ -21,7 +21,7 @@
 
 <div id="user-listing">
   <div class="row">
-    <div class="col d-flex justify-content-between align-items-baseline">
+    <div class="col d-flex justify-content-between align-items-center">
       <span>Mostrando <%= pluralize(@pagy.count, 'colaborador', plural: 'colaboradores') %></span>
       <div class="float-right">
         <%= render 'shared/paginator' %>
@@ -35,8 +35,6 @@
       <table class="table table-striped table-bordered">
       <thead class="thead-dark">
       <tr>
-        <th scope="col">
-        </th>
         <th scope="col">
         </th>
         <th scope="col">
@@ -69,17 +67,17 @@
       <% @records.each do |user| %>
         <tr>
           <td>
-            <%= status_icon(user.status) %>
-          </td>
-          <td>
             <div class="d-flex">
-            <% user.roles.each_with_index do |role,index| %>
+              <div class="mr-2">
+                <%= status_icon(user.status) %>
+              </div>
+              <% user.roles.each_with_index do |role,index| %>
                <%= role_icon(role, index) %>
-            <% end %>
+              <% end %>
             </div>
           </td>
           <td>
-            <%= user.first_name %>
+            <%= link_to user.first_name, edit_user_path(user) %>
           </td>
           <td>
             <%= user.last_name %>
