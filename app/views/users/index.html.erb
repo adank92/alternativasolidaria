@@ -1,27 +1,27 @@
 <% content_for(:container) { 'container-fluid' } %>
 
 <div class="row">
-  <div class="col">
-    <div class="form-group mb-2">
+  <div class="col-12">
+    <div class="filters form-group mb-2 d-flex">
       <%= select_tag :status, options_for_reflex_select(status_options, :first, :last, @status, prompt: 'Todos los estados'),
-                     data: { reflex: 'change->Tabular#change_status' } %>
+                     class:'form-control form-control-sm mr-2', data: { reflex: 'change->Tabular#change_status' } %>
       <%= select_tag :week, options_for_reflex_select(Week.for_current_month, :id, :name, @week, prompt: 'Todas las semanas'),
-                     data: { reflex: 'change->Tabular#change_week' } %>
+                      class:'form-control form-control-sm mr-2', data: { reflex: 'change->Tabular#change_week' } %>
       <%= select_tag :role, options_for_reflex_select(User.roles.humans, :first, :second, @role, prompt: 'Todas los roles'),
-                     data: { reflex: 'change->Tabular#change_role' } %>
+                     class:'form-control form-control-sm mr-2', data: { reflex: 'change->Tabular#change_role' } %>
       <%= select_tag :province, options_for_reflex_select(Province.all, :id, :name, @province, prompt: "Todas las provincias"),
-                     data: { reflex: 'change->Tabular#change_province' } %>
+                     class:'form-control form-control-sm mr-2', data: { reflex: 'change->Tabular#change_province' } %>
       <%= select_tag :province, options_for_reflex_select(@departments, :id, :name, @department, prompt: "Todas las zonas"),
-                     data: { reflex: 'change->Tabular#change_department' } %>
+                     class:'form-control form-control-sm mr-2', data: { reflex: 'change->Tabular#change_department' } %>
       <%= select_tag :locality, options_for_reflex_select(@localities, :id, :name, @locality, prompt: "Todas las Localidades"),
-                     data: { reflex: 'change->Tabular#change_locality' } %>
+                     class:'form-control form-control-sm', data: { reflex: 'change->Tabular#change_locality' } %>
     </div>
   </div>
 </div>
 
 <div id="user-listing">
   <div class="row">
-    <div class="col">
+    <div class="col d-flex justify-content-between align-items-baseline">
       <span>Mostrando <%= pluralize(@pagy.count, 'colaborador', plural: 'colaboradores') %></span>
       <div class="float-right">
         <%= render 'shared/paginator' %>
