@@ -7,6 +7,20 @@ class UsersController < ApplicationController
     @pagy, @records = pagy(find_users, page: @page)
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update(update_user_params)
+      flash[:success] = "El usuario se actualizó correctamente"
+      redirect_to action: :index
+    else
+      render :edit
+    end
+  end
+
   private
 
   def authenticate_admin!
@@ -19,14 +33,18 @@ class UsersController < ApplicationController
     @role = session[:role].to_s
     @province = session[:province].to_s
     @department = session[:department].to_s
-    @departments = session[:departments] || Province.first.departments
+    @departments = session[:departments] || Department.all
     @locality = session[:locality].to_s
-    @localities = session[:localities] || Province.first.localities
+    @localities = session[:localities] || Locality.all
     @page = (session[:page] || 1).to_i
   end
 
   def find_users
     User.where_status(@status).available_for_week(@week).where_role(@role).where_province(@province)
         .where_department(@department).where_locality(@locality)
+  end
+
+  def update_user_params
+    params.require(:user).permit(:first_name, :last_name, :locality_id, :address, :phone, week_ids: [], roles: [])
   end
 end
