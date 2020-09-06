@@ -11,8 +11,7 @@ es-AR:
       user: Usuario
     attributes:
       user:
-        first_name: Nombre
-        last_name: Apellido
+        name: Nombre
         email: Correo electrónico
         province_id: Provincia
         locality: Localidad

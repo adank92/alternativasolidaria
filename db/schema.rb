@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_04_032619) do
+ActiveRecord::Schema.define(version: 2020_09_06_171114) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "available_weeks", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -49,15 +52,14 @@ ActiveRecord::Schema.define(version: 2020_09_04_032619) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "first_name"
-    t.string "last_name"
+    t.string "name"
     t.boolean "admin", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "address"
     t.string "phone"
     t.integer "locality_id", null: false
-    t.integer "roles", limit: 8, default: 0, null: false
+    t.bigint "roles", default: 0, null: false
     t.integer "status", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["locality_id"], name: "index_users_on_locality_id"
