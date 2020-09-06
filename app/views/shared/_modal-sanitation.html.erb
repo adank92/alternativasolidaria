@@ -1,51 +1,54 @@
 <style>
-    #recipes li {
+    #modal-sanitation .modal-content {
+      border: none;
+      background-color: #c3b5a9;
+    }
+    #sanitation-rules li {
         list-style-type: none;
         margin-bottom: 2%;
         font-size: 1.25em;
     }
 
-    #recipes .carousel-control-prev,
-    #recipes .carousel-control-next {
+    #sanitation-rules .carousel-control-prev,
+    #sanitation-rules .carousel-control-next {
         width: 3%;
     }
 
-    #recipes .carousel-item {
+    #sanitation-rules .carousel-item {
         padding: 2%;
         height: 450px;
-        background:
-            linear-gradient(rgba(36, 37, 37, 0.77),
-                rgba(48, 46, 46, 49%)), url(/assets/comida.jpg);
-        background-repeat: no-repeat;
-        background-size: cover;
     }
 
-    #recipes .carousel-item h3 {
+    #sanitation-rules .carousel-item h3 {
         margin-bottom: 1.25rem;
         font-weight: 600;
     }
 
-    #recipes .carousel-item h3,
-    #recipes .carousel-item li {
+    #sanitation-rules .carousel-item h3,
+    #sanitation-rules .carousel-item li {
         text-align: center;
-        color: white;
+        color: black !important;
     }
 
 
-    #recipes .carousel-item li i {
+    #sanitation-rules .carousel-item li i {
         font-size: 1.35em !important;
     }
 
-    #recipes .carousel-indicators {
+    #sanitation-rules .carousel-indicators {
         bottom: -30px;
     }
 
-    #recipes .content {
+    #sanitation-rules .content {
         margin: auto;
     }
 
+    .carousel-control-prev, .carousel-control-next {
+      color: black;
+    }
+
     @media only screen and (max-width: 768px) {
-        #recipes .carousel-item {
+        #sanitation-rules .carousel-item {
             height: 650px;
         }
 
@@ -55,81 +58,88 @@
   }
 }
 </style>
-<div class="modal fade bd-example-modal-lg" id="modal-sanitation" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
+<div class="modal fade bd-example-modal-lg" id="modal-sanitation" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg text-dark ">
     <div class="modal-content">
-      <div id="recipes">
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="false">
-          <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-          </ol>
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <div class="content d-flex h-100 flex-column align-items-center justify-content-center">
-                <h3>Medidas de Higiene</h3>
-                <ul>
-                  <li>
-                    <i class="fas fa-hands-wash fa-fw fa-2x mr-2"></i>Lavarse bien las manos con agua y jabón antes decocinar y antes de manipular las viandas.</li>
-                  <li>
-                    <i class="fas fa-hand-sparkles fa-fw fa-2x mr-2"></i>Atarse el pelo al cocinar y evitar tocarse la cara durante todo el proceso</li>
-                  <li>
-                    <i class="fas fa-head-side-mask fa-fw fa-2x mr-2"></i>Usar barbijo.</li>
-                  <li>
-                    <i class="fas fa-carrot fa-fw fa-2x mr-2"></i>Lavar bien las frutas y hortalizas. Dejar en reposocon agua y lavandina (2 gotitas por litro de agua).</li>
-                  <li>
-                    <i class="fas fa-utensils fa-fw fa-2x mr-2"></i>Evitar la contaminación cruzada: no mezclar locrudo con lo cocido.</li>
-                </ul>
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-content">
+        <div id="sanitation-rules">
+          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="false">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="content d-flex h-100 flex-column align-items-center justify-content-center p-5">
+                  <h3>Medidas de Higiene</h3>
+                  <ul>
+                    <li>
+                      <i class="fas fa-hands-wash fa-fw fa-2x mr-2"></i>Lavarse bien las manos con agua y jabón antes decocinar y antes de manipular las viandas.</li>
+                    <li>
+                      <i class="fas fa-hand-sparkles fa-fw fa-2x mr-2"></i>Atarse el pelo al cocinar y evitar tocarse la cara durante todo el proceso</li>
+                    <li>
+                      <i class="fas fa-head-side-mask fa-fw fa-2x mr-2"></i>Usar barbijo.</li>
+                    <li>
+                      <i class="fas fa-carrot fa-fw fa-2x mr-2"></i>Lavar bien las frutas y hortalizas. Dejar en reposocon agua y lavandina (2 gotitas por litro de agua).</li>
+                    <li>
+                      <i class="fas fa-utensils fa-fw fa-2x mr-2"></i>Evitar la contaminación cruzada: no mezclar locrudo con lo cocido.</li>
+                  </ul>
+                </div>
               </div>
-            </div>
-            <div class="carousel-item">
-              <div class="content d-flex h-100 flex-column align-items-center justify-content-center">
+              <div class="carousel-item">
+                <div class="content d-flex h-100 flex-column align-items-center justify-content-center">
 
-                <h3>Después de Cocinar</h3>
-                <ul>
-                  <li>
-                    <i class="fas fa-temperature-low fa-fw fa-2x mr-2"></i>Esperar a que la comida se enfríe un poco antes de pasar a las bandejas.</li>
-                  <li>
-                    <i class="fas fa-temperature-low fa-fw fa-2x mr-2"></i>Si se cocina el día anterior guardar la comida en la
-                    <strong>heladera</strong>,
-                    <strong>NO</strong>
-                    dejar a temperatura ambiente.
-                  </li>
-                  <li>
-                    <i class="fas fa-fire-alt fa-fw fa-2x mr-2"></i>
-                    <strong>NO</strong>
-                    se calienta antes de entregar.</li>
-                </ul>
+                  <h3>Después de Cocinar</h3>
+                  <ul>
+                    <li>
+                      <i class="fas fa-temperature-low fa-fw fa-2x mr-2"></i>Esperar a que la comida se enfríe un poco antes de pasar a las bandejas.</li>
+                    <li>
+                      <i class="fas fa-temperature-low fa-fw fa-2x mr-2"></i>Si se cocina el día anterior guardar la comida en la
+                      <strong>heladera</strong>,
+                      <strong>NO</strong>
+                      dejar a temperatura ambiente.
+                    </li>
+                    <li>
+                      <i class="fas fa-fire-alt fa-fw fa-2x mr-2"></i>
+                      <strong>NO</strong>
+                      se calienta antes de entregar.</li>
+                  </ul>
+                </div>
               </div>
-            </div>
-            <div class="carousel-item">
-              <div class="content d-flex h-100 flex-column align-items-center justify-content-center">
+              <div class="carousel-item">
+                <div class="content d-flex h-100 flex-column align-items-center justify-content-center">
 
-                <h3>Entrega de Viandas</h3>
-                <ul>
-                  <li>
-                    <i class="fas fa-drumstick-bite fa-fw fa-2x mr-2"></i>Viandas cargaditas pero es importante no sobrecargar, ni poner exceso de liquido para que no se derrame en el camino.</li>
-                  <li>
-                    <i class="fas fa-tint-slash fa-fw fa-2x mr-2"></i>Asegurarse que las bandejas estén bien cerradas y no pierdan liquido.</li>
-                  <li>
-                    <i class="fas fa-box-open fa-fw fa-2x mr-2"></i>Entregarlas en bolsas o cajas que aguanten el peso y cantidad para asegurarnos que soporten el viaje que les espera hasta llegar a destino.</li>
-                  <li>
-                    <i class="fas fa-pencil-alt fa-fw fa-2x mr-2"></i>Indicar con un cartel la cantidad de viandas que hay en cada bolsa o caja.</li>
-                  <li>
-                    <i class="fas fa-user-clock fa-fw fa-2x mr-2"></i>Esperar puntualmente al distribuidor a la hora que se le indique.</li>
-                </ul>
+                  <h3>Entrega de Viandas</h3>
+                  <ul>
+                    <li>
+                      <i class="fas fa-drumstick-bite fa-fw fa-2x mr-2"></i>Viandas cargaditas pero es importante no sobrecargar, ni poner exceso de liquido para que no se derrame en el camino.</li>
+                    <li>
+                      <i class="fas fa-tint-slash fa-fw fa-2x mr-2"></i>Asegurarse que las bandejas estén bien cerradas y no pierdan liquido.</li>
+                    <li>
+                      <i class="fas fa-box-open fa-fw fa-2x mr-2"></i>Entregarlas en bolsas o cajas que aguanten el peso y cantidad para asegurarnos que soporten el viaje que les espera hasta llegar a destino.</li>
+                    <li>
+                      <i class="fas fa-pencil-alt fa-fw fa-2x mr-2"></i>Indicar con un cartel la cantidad de viandas que hay en cada bolsa o caja.</li>
+                    <li>
+                      <i class="fas fa-user-clock fa-fw fa-2x mr-2"></i>Esperar puntualmente al distribuidor a la hora que se le indique.</li>
+                  </ul>
+                </div>
               </div>
             </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
           </div>
-          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
         </div>
       </div>
     </div>

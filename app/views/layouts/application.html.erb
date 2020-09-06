@@ -23,8 +23,8 @@
     <div class="d-flex flex-column flex-md-row align-items-center p-1 px-md-4 bg-white shadow-sm">
       <h5 class="my-0 mr-md-auto font-weight-normal"><img style="height: 75px;" src='<%= asset_path("logo.jpg") %>' /><%= link_to "Alternativa Solidaria", root_path, class: 'p-2 text-dark' %></h5>
       <nav class="my-2 my-md-0 mr-md-3">
-        <a class="p-2 text-dark" href="#">Quienes Somos</a>
-        <a class="p-2 text-dark" href="#">Como Funcionamos</a>
+        <a class="p-2 text-dark" href="#who-we-are">Quienes Somos</a>
+        <a class="p-2 text-dark" href="#how-we-do-it">Como Funcionamos</a>
         <a class="p-2 text-dark" href="#">Recetas</a>
         <% if current_user&.admin? %>
           <%= link_to "Colaboradores", users_path, class: 'p-2 text-dark' %>
@@ -55,5 +55,33 @@
 
       <%= content_for?(:content) ? yield(:content) : yield %>
     </div>
+
+    <footer class="page-footer font-small bg-light">
+      <!-- Footer Elements -->
+      <div class="container">
+        <!-- Grid row-->
+        <div class="row">
+          <!-- Grid column -->
+          <div class="col-md-12 py-5">
+            <div class="mb-5 flex-center">
+              <!-- Facebook -->
+              <a class="fb-ic">
+                <i class="fa fa-facebook fa-lg white-text mr-md-5 mr-3 fa-2x"></i>
+              </a>
+              <!--Instagram-->
+              <a class="ins-ic">
+                <i class="fa fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"></i>
+              </a>
+            </div>
+          </div>
+          <!-- Grid column -->
+        </div>
+        <!-- Grid row-->
+      </div>
+      <!-- Footer Elements -->
+      <div class="text-center py-3">
+        <p class="text-dark"><strong>Telefono: (11) 4041-3638 | Email: somosalternativasolidaria@gmail.com</strong></p>
+      </div>
+    </footer>
   </body>
 </html>

@@ -1,23 +1,21 @@
 <% content_for(:container) { 'container-fluid home-content' } %>
 
-  <section class="welcome p-0 mb-1 pt-3 pb-5" style="height: 650px;">
-    <div class="row ml-5 mr-5">
-      <div class="col-sm-6 title">
-        <p>Ayudemos<br>a los que más<br>nos
-          <strong>necesitan</strong>
-        </p>
-      </div>
-      <div class="text-right col-sm-6">
-        <%= image_tag("welcome3.png", :class => "ml-5") %>
+  <section class="welcome p-0 mb-1 pt-3 pb-5 bg-dark text-light">
+    <div class="container">
+      <div class="row ml-5 mr-5">
+        <div class="col-sm-12 col-md-12 title">
+          <p class="text-center">Ayudemos a los que más nos <strong>necesitan</strong>
+          </p>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="bg-light text-dark pt-5 pb-5">
+  <section class="bg-light text-dark pt-5 pb-5 who-we-are" id="who-we-are">
     <div class="row ml-5 mr-5">
-      <div class="col-sm-5">
+      <div class="col-md-5 col-sm-12">
         <h1 class="font-weight-bold mb-2">¿Quiénes somos?</h1>
-        <p class="who-we-are">
+        <p>
           Somos un grupo de familias de CABA y Alrededores que, ante el brote de la pandemia del
           <strong>COVID 19</strong>, y viendo la necesidad de asistencia requerida por numerosos comedores decidió juntarse para asistir la creciente demanda que ellos vienen teniendo. Todos los fines de semana las familias que pueden, colaboran cocinando 25
           viandas de comida que son entregas a comedores, para ser distribuida a personas carenciadas del barrio.
@@ -27,7 +25,7 @@
           Nuestro proyecto consiste en la entrega de viandas cocinadas por las distintas familias y Donaciones que son destinadas a los comedores que asistimos con las viandas.
         </p>
       </div>
-      <div class="col-sm-7">
+      <div class="col-md-7 col-sm-12">
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active">
@@ -50,7 +48,7 @@
     </div>
   </section>
 
-  <section class="bg-dark text-light pt-5 pb-5">
+  <section class="bg-dark text-light pt-5 pb-5" id="how-we-do-it">
     <h1 class="text-center font-weight-bold mb-5">¿Cómo lo hacemos?</h1>
     <div class="row ml-5 mr-5">
       <div class="col-md-3">
@@ -85,7 +83,7 @@
           </div>
           <h3 class="text-center font-weight-bold mb-2">A Cocinar!</h3>
           <p class="text-center">Cocinamos con mucho amor siguiedo las recomedaciones de
-            <a href="#modal-sanitation">higiene</a>
+            <a href="#modal-sanitation" data-toggle="modal" data-target="#modal-sanitation">higiene</a>
           </p>
         </div>
       </div>
@@ -102,8 +100,8 @@
     </div>
   </section>
 
-  <section class="bg-light text-dark pb-">
-    <h1 class="text-center font-weight-bold mb-5 pt-5">¿A quiénes ayudamos?</h1>
+  <section class="bg-light text-dark pt-5 pb-5">
+    <h1 class="text-center font-weight-bold mb-5">¿A quiénes ayudamos?</h1>
     <div class="row ml-5 mr-5">
       <div class="col-md-3 col-sm-12">
         <ul>
@@ -139,7 +137,9 @@
       para asistir contactate con nosotros
       <strong>somosalternativasolidaria@gmail.com</strong>
     </p>
-    <hr class="mt-5">
+  </section>
+
+  <section class="bg-dark text-light pb-5">
     <div class="row ml-5 mr-5">
       <div class="col-md-12">
         <h1 class="text-center font-weight-bold mb-5 pt-5">¿Qué necesitamos?</h1>
@@ -151,7 +151,6 @@
           <strong>difusión</strong>
           de este mensaje ayuda a que nos conozcan y conozcan este proyecto.
         </p>
-
       </div>
     </div>
   </section>
