@@ -19,4 +19,9 @@ class User < ApplicationRecord
   scope :where_locality, ->(locality) { where(locality: locality) if locality.present? }
   scope :where_province, ->(province) { joins(:province).where(provinces: { id: province }) if province.present? }
   scope :where_department, ->(department) { joins(:department).where(departments: { id: department }) if department.present? }
+  scope :search, ->(query) {
+    return unless query.present?
+    query = sanitize_sql_like(query)
+    [:name, :email, :address, :phone].map { |field| where(arel_table[field].matches("%#{query}%")) }.reduce(&:or)
+  }
 end

@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 class TabularReflex < ApplicationReflex
+  def search
+    session[:search] = element[:value]
+    reset_page
+  end
+
   def change_status
     session[:status] = element[:value]
     reset_page

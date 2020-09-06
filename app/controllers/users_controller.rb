@@ -36,12 +36,13 @@ class UsersController < ApplicationController
     @departments = session[:departments] || Department.all
     @locality = session[:locality].to_s
     @localities = session[:localities] || Locality.all
+    @search = session[:search]
     @page = (session[:page] || 1).to_i
   end
 
   def find_users
     User.where_status(@status).available_for_week(@week).where_role(@role).where_province(@province)
-        .where_department(@department).where_locality(@locality)
+        .where_department(@department).where_locality(@locality).search(@search)
   end
 
   def update_user_params

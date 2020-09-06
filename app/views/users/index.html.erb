@@ -2,7 +2,7 @@
 
 <div class="row">
   <div class="col-12">
-    <div class="filters form-group mb-2 d-md-inline-flex d-sm-flex">
+    <div class="form-group mb-2 d-md-inline-flex d-sm-flex">
       <%= select_tag :status, options_for_reflex_select(status_options, :first, :last, @status, prompt: 'Todos los estados'),
                      class:'form-control form-control-sm mr-md-2 mb-2', data: { reflex: 'change->Tabular#change_status' } %>
       <%= select_tag :week, options_for_reflex_select(Week.for_current_month, :id, :name, @week, prompt: 'Todas las semanas'),
@@ -15,6 +15,15 @@
                      class:'form-control form-control-sm mr-md-2 mb-2', data: { reflex: 'change->Tabular#change_department' } %>
       <%= select_tag :locality, options_for_reflex_select(@localities, :id, :name, @locality, prompt: "Todas las localidades"),
                      class:'form-control form-control-sm', data: { reflex: 'change->Tabular#change_locality' } %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <div class="form-group mb-2 d-md-inline-flex d-sm-flex">
+      <%= text_field_tag :search, @search, placeholder: 'Nombre/Direccion/Celular', class: 'form-control form-control-sm',
+                         data: { controller: "tabular", action: 'input->tabular#search' }%>
     </div>
   </div>
 </div>
