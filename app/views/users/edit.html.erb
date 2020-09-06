@@ -1,64 +1,20 @@
-<div id="register-page">
-  <h2 class="pt-4 mb-8 text-4xl font-bold heading">Editar perfil</h2>
-  <%= bootstrap_form_for(@user) do |f| %>
-    <div class="form-row">
-      <div class="form-group col-md-4">
-        <%= f.text_field :first_name, class:"form-control" %>
-      </div>
-      <div class="form-group col-md-4">
-        <%= f.text_field :last_name, class:"form-control" %>
-      </div>
-      <div class="form-group col-md-4">
-        <%= f.email_field :email, autocomplete: "email", class:"form-control" %>
-      </div>
-    </div>
-    <div data-controller="province" data-province-locations-url="<%= localities_path %>">
+<div class="card shadow rounded">
+  <h3 class="card-header">Editar perfil</h3>
+  <div class="card-body">
+    <%= bootstrap_form_for(@user) do |f| %>
+      <%= render 'users/registrations/upper_form', f: f %>
+      <hr class="mt-6 border" />
       <div class="form-row">
-        <div class="form-group col-md-6">
-          <%= f.label :province_id, class: 'label' %>
-          <%= select_tag :province_id, options_from_collection_for_select(Province.all, :id, :name, @user.province.id), class: 'form-control', data: { target: 'province.provinceId', action: 'province#findLocalities' } %>
-        </div>
-        <div class="form-group col-md-6">
-          <%= f.collection_select :locality_id, @user.province.localities, :id, :name, {}, class: 'form-control', data: { target: 'province.localityId' } %>
+        <%= f.collection_radio_buttons :status, status_options, :first, :last, wrapper: { class: 'col' } %>
+        <div class="form-group col">
+          <%= f.check_box :admin, label: "Es administrador", wrapper: { class: 'col' } %>
         </div>
       </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <%= f.text_field :address, class:"form-control" %>
+      <div class="form-row">
+        <div class="form-group col">
+          <%= f.submit class: "btn btn-primary mt-3" %>
+        </div>
       </div>
-      <div class="form-group col-md-6">
-        <%= f.text_field :phone, class:"form-control" %>
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <%= f.collection_check_boxes :roles, User.roles.humans, :first, :second do |b| %>
-          <div class="form-check">
-            <%=  b.label(class:"form-check-label") { b.check_box(class:"form-check-input") + b.text}  %>
-          </div>
-        <% end %>
-      </div>
-      <div class="form-group col-md-6">
-        <%= f.label :available_weeks, "Fines de semana con disponibilidad" %>
-        <%= f.collection_check_boxes :week_ids, Week.for_current_month, :id, :name, hide_label: true %>
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-6">
-          <%= f.label :status, "Estado" %>
-          <%= f.collection_radio_buttons :status, status_options, :first, :last, hide_label: true %>
-      </div>
-      <div class="form-group col-md-6">
-        <%= f.form_group :admin do %>
-          <%= f.check_box :admin, label: "Es administrador" %>
-      <% end %>
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-12">
-        <%= f.submit class: "btn btn-primary" %>
-      </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>

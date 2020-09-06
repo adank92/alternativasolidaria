@@ -23,6 +23,9 @@ es-AR:
         password: Contraseña
         password_confirmation: Confirmar contraseña
         current_password: Contraseña actual
+        remember_me: Recuerdame
+        week_ids: Fines de semana con disponibilidad
+        status: Estado
     enums:
       user:
         status:
