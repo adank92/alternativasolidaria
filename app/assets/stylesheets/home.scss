@@ -58,10 +58,6 @@ section.welcome {
   margin-bottom: 20px;
 }
 
-.who-we-are img {
-  width: 65%
-}
-
 @media (max-width: 768px) {
     .home-content {
       margin-top: 0;
@@ -76,10 +72,6 @@ section.welcome {
      padding-top: 0;
    }
 
-   .welcome img {
-     display: none;
-   }
-
    .who-we-are {
      text-align: center;
    }
@@ -87,11 +79,17 @@ section.welcome {
 }
 
 @media (max-width: 960px) {
+
+  .who-we-are img {
+    float: none !important;
+    width: 95%;
+  }
+
   section.welcome {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    height: 70vh;
+    height: 50vh;
     background-attachment: unset;
   }
 }
