@@ -59,7 +59,7 @@ section.welcome {
 }
 
 .who-we-are img {
-  width: 80%
+  width: 65%
 }
 
 @media (max-width: 768px) {
@@ -83,4 +83,15 @@ section.welcome {
    .who-we-are {
      text-align: center;
    }
+
+}
+
+@media (max-width: 960px) {
+  section.welcome {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 70vh;
+    background-attachment: unset;
+  }
 }
