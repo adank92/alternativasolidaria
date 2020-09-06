@@ -9,8 +9,7 @@
 buenos_aires = Province.create(name: "GBA")
 caba = Province.create(name: "CABA")
 
-comuna = Department.create(name: "Zona norte 1", province: buenos_aires)
-Locality.create(name: 'Boulogne', department: comuna)
+# CABA
 
 comuna = Department.create(name: "Comuna 1", province: caba)
 ['Retiro', 'San Nicolás', 'Puerto Madero', 'San Telmo', 'Monserrat', 'Constitución'].each do |name|
@@ -78,5 +77,37 @@ Locality.create(name: 'Palermo', department: comuna)
 
 comuna = Department.create(name: "Comuna 15", province: caba)
 ['Chacarita', 'Villa Crespo', 'Paternal', 'Villa Ortúzar', 'Agronomía', 'Parque Chas'].each do |name|
+  Locality.create(name: name, department: comuna)
+end
+
+# GBA
+
+comuna = Department.create(name: "Zona Oeste 1", province: buenos_aires)
+['Ramos Mejía', 'Lomas del Mirador', 'Isidro Casanova', 'Villa Luzuriaga', 'Ciudadela', 'Gregorio de Laferrere', 'San Justo'].each do |name|
+  Locality.create(name: name, department: comuna)
+end
+
+comuna = Department.create(name: "Zona Oeste 2", province: buenos_aires)
+['Ituzaingó', 'Caseros', 'Castelar', 'Merlo', 'Ciudadela', 'Gregorio de Laferrere', 'San Justo'].each do |name|
+  Locality.create(name: name, department: comuna)
+end
+
+comuna = Department.create(name: "Zona Sur 1", province: buenos_aires)
+['Avellaneda', 'Sarandí', 'Gerli', 'Lanús', 'Temperley', 'Turdera'].each do |name|
+  Locality.create(name: name, department: comuna)
+end
+
+comuna = Department.create(name: "Zona Sur 2", province: buenos_aires)
+['Berazategui', 'Esteban Echeverría', 'Quilmes', 'Ezeiza', 'Florencio Varela'].each do |name|
+  Locality.create(name: name, department: comuna)
+end
+
+comuna = Department.create(name: "Zona Norte 1", province: buenos_aires)
+['Olivos', 'San Isidro', 'Martínez', 'Vicente López', 'Florida', 'Villa Ballester', 'Béccar', 'Boulogne Sur Mer', 'San Fernando', 'San Martín'].each do |name|
+  Locality.create(name: name, department: comuna)
+end
+
+comuna = Department.create(name: "Zona Norte 2", province: buenos_aires)
+['Don Torcuato', 'Belén de Escobar', 'El Talar', 'Tigre', 'Matheu'].each do |name|
   Locality.create(name: name, department: comuna)
 end

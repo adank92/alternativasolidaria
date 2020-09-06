@@ -7,7 +7,7 @@ class User < ApplicationRecord
   belongs_to :locality
   has_one :department, through: :locality
   has_one :province, through: :department
-  has_many :available_weeks
+  has_many :available_weeks, dependent: :destroy
   has_many :weeks, through: :available_weeks
 
   validates_presence_of :name, :roles, :address
