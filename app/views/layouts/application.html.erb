@@ -20,7 +20,7 @@
 
 
   <body class="<%= current_page?(root_url) ? 'bg-white' : 'bg-light '%>">
-    <div class="d-flex flex-column flex-md-row align-items-center p-1 px-md-4 bg-white mb-5 <%= current_page?(root_url) ? '' : 'shadow-sm'%>">
+    <div class="d-flex flex-column flex-md-row align-items-center p-1 px-md-4 bg-white mb-4 <%= current_page?(root_url) ? '' : 'shadow-sm'%>">
       <h5 class="my-0 mr-md-auto font-weight-normal"><img style="height: 75px;" src='<%= asset_path("logo.jpg") %>' /><%= link_to "Alternativa Solidaria", root_path, class: 'p-2 text-dark' %></h5>
       <nav class="my-2 my-md-0 mr-md-3">
         <a class="p-2 text-dark" href="#who-we-are">Quienes Somos</a>
