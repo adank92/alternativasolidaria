@@ -1,0 +1,22 @@
+<div class="form-row">
+  <%= f.text_field :first_name, wrapper: { class: 'col' } %>
+  <%= f.text_field :last_name, wrapper: { class: 'col' } %>
+  <%= f.email_field :email, autocomplete: "email", wrapper: { class: 'col' } %>
+</div>
+<div data-controller="province" data-province-locations-url="<%= localities_path %>">
+  <div class="form-row">
+    <div class="form-group col">
+      <%= f.label :province_id, class: 'label' %>
+      <%= select_tag :province_id, options_from_collection_for_select(Province.all, :id, :name, f.object.province.id), class: 'form-control', data: { target: 'province.provinceId', action: 'province#findLocalities' } %>
+    </div>
+    <%= f.collection_select :locality_id, f.object.province.localities, :id, :name, { wrapper: { class: 'col' } }, data: { target: 'province.localityId' } %>
+  </div>
+</div>
+<div class="form-row">
+  <%= f.text_field :address, wrapper: { class: 'col' } %>
+  <%= f.text_field :phone, wrapper: { class: 'col' } %>
+</div>
+<div class="form-row">
+  <%= f.collection_check_boxes :roles, User.roles.humans, :first, :second, wrapper: { class: 'col' } %>
+  <%= f.collection_check_boxes :week_ids, Week.for_current_month, :id, :name, wrapper: { class: 'col' } %>
+</div>

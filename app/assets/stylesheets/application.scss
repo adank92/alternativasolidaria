@@ -1,8 +1,18 @@
 @import "rails_bootstrap_forms";
-@import "signup";
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 
 body {
     font-family: 'Varela Round', sans-serif;
+}
+
+#rainbow-bar {
+  margin-bottom: 1.50rem;
+  left: 0px;
+  right:0px;
+  bottom: 0px;
+  top:0px;
+  height: 8px;
+  background-image: -webkit-linear-gradient(0deg, #ff0000 40px, #ff0000 40px, #ff0000 70px,#ffa500 70px, #ffa500 100px, #ffa500 100px,#ffa500 130px,#ffff00 130px,#ffff00 160px,#ffff00 160px,#ffff00 190px,#008000 190px,#008000 220px,#008000 220px,#008000 250px,	#0000ff 250px,	#0000ff 280px,	#0000ff 280px,#0000ff 310px, #4b0082 310px, #4b0082 340px, 	#4b0082 340px, 	#4b0082 370px, #ee82ee 370px, #ee82ee 400px, #ee82ee 400px, #ee82ee 430px);
+  background-size: 430px;
 }

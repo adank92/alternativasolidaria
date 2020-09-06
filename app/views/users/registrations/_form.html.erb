@@ -1,0 +1,21 @@
+<%= render 'upper_form', f: f %>
+<div class="form-row">
+  <div class="form-group col">
+    <%= f.label :password, class: "label" %>
+    <% if @minimum_password_length %>
+      <span class="pl-1 text-xs text-grey-dark"><small>(<%= 'Dejar en blanco para no actualizar. ' if f.object.persisted? %>Minimo <%= @minimum_password_length %> caracteres)</small></span>
+    <% end %>
+    <%= f.password_field :password, hide_label: true, wrapper: false, autocomplete: "new-password" %>
+  </div>
+  <%= f.password_field :password_confirmation, autocomplete: "new-password", wrapper: { class: 'col' } %>
+</div>
+<% if f.object.persisted? %>
+  <div class="form-row">
+    <%= f.password_field :current_password, autocomplete: "current-password", wrapper: { class: 'col-6' } %>
+  </div>
+<% end %>
+<div class="form-row">
+  <div class="form-group col">
+    <%= f.submit class: "btn btn-primary mt-3" %>
+  </div>
+</div>

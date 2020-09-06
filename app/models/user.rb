@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :available_weeks
   has_many :weeks, through: :available_weeks
 
-  validates_presence_of :first_name, :last_name, :roles
+  validates_presence_of :first_name, :last_name, :roles, :address
   validates :phone, numericality: true
 
   scope :where_status, ->(status) { where(status: status) if status.present? }
