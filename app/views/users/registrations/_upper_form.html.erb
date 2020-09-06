@@ -1,6 +1,5 @@
 <div class="form-row">
-  <%= f.text_field :first_name, wrapper: { class: 'col' } %>
-  <%= f.text_field :last_name, wrapper: { class: 'col' } %>
+  <%= f.text_field :name, wrapper: { class: 'col' } %>
   <%= f.email_field :email, autocomplete: "email", wrapper: { class: 'col' } %>
 </div>
 <div data-controller="province" data-province-locations-url="<%= localities_path %>">

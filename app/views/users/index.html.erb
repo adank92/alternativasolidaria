@@ -41,9 +41,6 @@
           Nombre
         </th>
         <th scope="col">
-          Apellido
-        </th>
-        <th scope="col">
           Provincia
         </th>
         <th scope="col">
@@ -77,10 +74,7 @@
             </div>
           </td>
           <td>
-            <%= link_to user.first_name, edit_user_path(user) %>
-          </td>
-          <td>
-            <%= user.last_name %>
+            <%= link_to user.name, edit_user_path(user) %>
           </td>
           <td>
             <%= user.province.name %>
