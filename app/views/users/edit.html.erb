@@ -45,6 +45,17 @@
       </div>
     </div>
     <div class="form-row">
+      <div class="form-group col-md-6">
+          <%= f.label :status, "Estado" %>
+          <%= f.collection_radio_buttons :status, status_options, :first, :last, hide_label: true %>
+      </div>
+      <div class="form-group col-md-6">
+        <%= f.form_group :admin do %>
+          <%= f.check_box :admin, label: "Es administrador" %>
+      <% end %>
+      </div>
+    </div>
+    <div class="form-row">
       <div class="form-group col-md-12">
         <%= f.submit class: "btn btn-primary" %>
       </div>

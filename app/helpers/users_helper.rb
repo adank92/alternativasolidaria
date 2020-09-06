@@ -1,7 +1,7 @@
 module UsersHelper
   def status_options
     User.statuses.map do |name, value|
-      [value, t("activerecord.enums.user.status.#{name}")]
+      [name, t("activerecord.enums.user.status.#{name}")]
     end
   end
 
