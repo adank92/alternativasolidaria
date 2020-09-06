@@ -1,19 +1,12 @@
+<%= stylesheet_link_tag "home" %>
 <% content_for(:container) { 'container-fluid home-content' } %>
 
-  <section class="welcome p-0 mb-1 pt-3 pb-5 bg-dark text-light">
-    <div class="container">
-      <div class="row ml-5 mr-5">
-        <div class="col-sm-12 col-md-12 title">
-          <p class="text-center">Ayudemos a los que más nos <strong>necesitan</strong>
-          </p>
-        </div>
-      </div>
-    </div>
+  <section class="welcome p-0 mb-1 pt-3 pb-5 bg-white text-light">
   </section>
 
   <section class="bg-light text-dark pt-5 pb-5 who-we-are" id="who-we-are">
     <div class="row ml-5 mr-5">
-      <div class="col-md-5 col-sm-12">
+      <div class="col-md-7 col-sm-12">
         <h1 class="font-weight-bold mb-2">¿Quiénes somos?</h1>
         <p>
           Somos un grupo de familias de CABA y Alrededores que, ante el brote de la pandemia del
@@ -25,25 +18,8 @@
           Nuestro proyecto consiste en la entrega de viandas cocinadas por las distintas familias y Donaciones que son destinadas a los comedores que asistimos con las viandas.
         </p>
       </div>
-      <div class="col-md-7 col-sm-12">
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <%= image_tag("banner_1.png", :class => "ml-5") %>
-            </div>
-            <div class="carousel-item">
-              <%= image_tag("banner_2.png", :class => "ml-5") %>
-            </div>
-          </div>
-          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </div>
+      <div class="col-md-5 col-sm-12">
+          <%= image_tag("welcome3.png", :class => "ml-5") %>
       </div>
     </div>
   </section>

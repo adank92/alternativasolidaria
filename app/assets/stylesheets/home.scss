@@ -1,0 +1,86 @@
+/**Home**/
+.carousel-inner > .carousel-item {
+  height: 400px;
+}
+
+.home-content {
+  font-family: 'Source Sans Pro', sans-serif;
+  padding: 0 !important;
+}
+
+.home-content hr {
+  width: 50%;
+}
+
+section.welcome {
+  background-image: url("hands.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center 132px;
+  background-attachment: fixed;
+  height: 70vh;
+}
+
+.welcome p {
+  font-size: 5em;
+}
+
+.welcome img {
+  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.merendero-contact,
+.we-need,
+#who-we-are p {
+  font-size: 1.25em;
+}
+
+.title {
+  margin-top: 5%;
+}
+
+.box-simple .icon-outlined {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.icon-outlined {
+  width: 80px;
+  height: 80px;
+  line-height: 92px;
+  text-align: center;
+  display: inline-block;
+  font-size: 1.4rem;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  margin-bottom: 20px;
+}
+
+.who-we-are img {
+  width: 80%
+}
+
+@media (max-width: 768px) {
+    .home-content {
+      margin-top: 0;
+    }
+
+   .welcome p {
+     font-size: 3.25em;
+     text-align: center;
+   }
+
+   section.welcome {
+     padding-top: 0;
+   }
+
+   .welcome img {
+     display: none;
+   }
+
+   .who-we-are {
+     text-align: center;
+   }
+}
