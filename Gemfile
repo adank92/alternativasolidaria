@@ -33,6 +33,8 @@ gem "stimulus_reflex", :git => 'https://github.com/hopsoft/stimulus_reflex.git',
 gem 'pagy'
 gem 'active_flag'
 gem "bootstrap_form", "~> 4.0"
+gem "redis", ">= 4.0", :require => ["redis", "redis/connection/hiredis"]
+gem "hiredis"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
