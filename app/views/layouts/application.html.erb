@@ -27,7 +27,7 @@
         <a class="p-2 text-dark" href="#how-we-do-it">Como Funcionamos</a>
         <a class="p-2 text-dark" href="#">Recetas</a>
         <% if current_user&.admin? %>
-          <%= link_to "Colaboradores", users_path, class: 'p-2 text-dark' %>
+          <%= link_to "Colaboradores", users_path, class: 'btn btn-info' %>
         <% end %>
       </nav>
       <div class="btn-toolbar" role="toolbar" aria-label="Botones de acceso">
