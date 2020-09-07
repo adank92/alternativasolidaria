@@ -9,14 +9,19 @@
         <%= f.select :province_id, options_for_reflex_select(@search.provinces, :id, :name, @search.province_id, prompt: "Todas las provincias"), {}, { data: { reflex: 'change->Tabular#submit' }, class:'form-control form-control-sm mr-md-2 mb-2' } %>
         <%= f.select :department_id, options_for_reflex_select(@search.departments, :id, :name, @search.department_id, prompt: "Todas las zonas"), {}, { data: { reflex: 'change->Tabular#submit' }, class:'form-control form-control-sm mr-md-2 mb-2' } %>
         <%= f.select :locality_id, options_for_reflex_select(@search.localities, :id, :name, @search.locality_id, prompt: "Todas las localidades"), {}, { data: { reflex: 'change->Tabular#submit' }, class:'form-control form-control-sm mr-md-2 mb-2' } %>
-        <%= f.text_field :text, placeholder: 'Buscar...', class: 'form-control form-control-sm',
-                         data: { controller: "tabular", action: 'input->tabular#search' } %>
       </div>
     </div>
   </div>
 
   <div class="row">
-    <div class="col d-flex justify-content-between align-items-center">
+    <div class="col-md-4 col-sm-12">
+      <%= f.text_field :text, placeholder: 'Buscar...', class: 'form-control form-control-sm',
+                       data: { controller: "tabular", action: 'input->tabular#search' } %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col d-flex justify-content-between align-items-center mt-3">
       <span>Mostrando <%= pluralize(@pagy.count, 'colaborador', plural: 'colaboradores') %></span>
       <div class="float-right">
         <%= render 'shared/paginator' %>
