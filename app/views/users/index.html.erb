@@ -19,13 +19,13 @@
   </div>
 </div>
 
-<div class="row">
+<div class="row" data-controller="tabular">
   <div class="col-12">
     <div class="form-group mb-2 d-md-inline-flex d-sm-flex">
       <%= text_field_tag :search, @search, placeholder: 'Buscar...', class: 'form-control form-control-sm',
-                         data: { controller: "tabular", action: 'input->tabular#search' }%>
+                         data: { action: 'input->tabular#search', target: 'tabular.search' } %>
     </div>
-    <button class="btn btn-primary" data-reflex="click->tabular#clean">Limpiar filtros</button>
+    <button class="btn btn-primary" data-action="click->tabular#clean">Limpiar filtros</button>
   </div>
 </div>
 
