@@ -3,7 +3,7 @@ require 'csv'
 namespace :users do
   task :import => :environment do
     User.transaction do
-      CSV.read('tmp/voluntarios1.csv').each_with_index do |row, i|
+      CSV.read('voluntarios1.csv').each_with_index do |row, i|
         roles = (row[0].strip.downcase == 'cocinero') ? [:chef] : [:delivery]
         status = case row[1].strip.downcase
                  when 'activo'
