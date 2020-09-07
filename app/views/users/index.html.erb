@@ -25,6 +25,7 @@
       <%= text_field_tag :search, @search, placeholder: 'Buscar...', class: 'form-control form-control-sm',
                          data: { controller: "tabular", action: 'input->tabular#search' }%>
     </div>
+    <button class="btn btn-primary" data-reflex="click->tabular#clean">Limpiar filtros</button>
   </div>
 </div>
 

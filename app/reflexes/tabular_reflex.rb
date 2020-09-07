@@ -45,6 +45,12 @@ class TabularReflex < ApplicationReflex
     session[:page] = element.dataset[:page].to_i
   end
 
+  def clean
+    [:search, :status, :week, :role, :province, :departments, :department, :localities, :locality, :page].each do |k|
+      session[k] = nil
+    end
+  end
+
   private
 
   def reset_page
