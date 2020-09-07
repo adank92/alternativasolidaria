@@ -1,59 +1,11 @@
 # frozen_string_literal: true
 
 class TabularReflex < ApplicationReflex
-  def search
-    session[:search] = element[:value]
-    reset_page
+  def submit
+    @page = 1
   end
 
-  def change_status
-    session[:status] = element[:value]
-    reset_page
-  end
-
-  def change_week
-    session[:week] = element[:value]
-    reset_page
-  end
-
-  def change_role
-    session[:role] = element[:value]
-    reset_page
-  end
-
-  def change_province
-    province = Province.find_by(id: element[:value])
-    session[:province] = province&.id
-    session[:departments] = province&.departments
-    session[:localities] = province&.localities
-    session[:department] = nil
-    session[:locality] = nil
-    reset_page
-  end
-
-  def change_department
-    session[:department] = element[:value]
-    reset_page
-  end
-
-  def change_locality
-    session[:locality] = element[:value]
-    reset_page
-  end
-
-  def paginate
-    session[:page] = element.dataset[:page].to_i
-  end
-
-  def clean
-    [:search, :status, :week, :role, :province, :departments, :department, :localities, :locality, :page].each do |k|
-      session[k] = nil
-    end
-  end
-
-  private
-
-  def reset_page
-    session[:page] = 1
+  def change_page
+    @page = element.data_attributes["page"].to_i
   end
 end

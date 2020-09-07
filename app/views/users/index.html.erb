@@ -1,35 +1,26 @@
 <% content_for(:container) { 'container-fluid' } %>
-
-<div class="row">
-  <div class="col-12">
-    <div class="form-group mb-2 d-md-inline-flex d-sm-flex">
-      <%= select_tag :status, options_for_reflex_select(status_options, :first, :last, @status, prompt: 'Todos los estados'),
-                     class:'form-control form-control-sm mr-md-2 mb-2', data: { reflex: 'change->Tabular#change_status' } %>
-      <%= select_tag :week, options_for_reflex_select(Week.for_current_month, :id, :name, @week, prompt: 'Todas las semanas'),
-                      class:'form-control form-control-sm mr-md-2 mb-2', data: { reflex: 'change->Tabular#change_week' } %>
-      <%= select_tag :role, options_for_reflex_select(User.roles.humans, :first, :second, @role, prompt: 'Todos los roles'),
-                     class:'form-control form-control-sm mr-md-2 mb-2', data: { reflex: 'change->Tabular#change_role' } %>
-      <%= select_tag :province, options_for_reflex_select(Province.all, :id, :name, @province, prompt: "Todas las provincias"),
-                     class:'form-control form-control-sm mr-md-2 mb-2', data: { reflex: 'change->Tabular#change_province' } %>
-      <%= select_tag :province, options_for_reflex_select(@departments, :id, :name, @department, prompt: "Todas las zonas"),
-                     class:'form-control form-control-sm mr-md-2 mb-2', data: { reflex: 'change->Tabular#change_department' } %>
-      <%= select_tag :locality, options_for_reflex_select(@localities, :id, :name, @locality, prompt: "Todas las localidades"),
-                     class:'form-control form-control-sm', data: { reflex: 'change->Tabular#change_locality' } %>
+<%= form_with model: @search, url: users_path do |f| %>
+  <div class="row">
+    <div class="col-12">
+      <div class="form-group mb-2 d-md-inline-flex d-sm-flex">
+        <%= f.select :status, options_from_collection_for_select(status_options, :first, :last),
+                     { prompt: "Todas los estados" }, { data: { reflex: 'change->Tabular#submit' }, class:'form-control form-control-sm mr-md-2 mb-2' } %>
+        <%= f.select :week, options_from_collection_for_select(Week.for_current_month, :id, :name),
+                     { prompt: "Todas las semanas" }, { data: { reflex: 'change->Tabular#submit' }, class:'form-control form-control-sm mr-md-2 mb-2' } %>
+        <%= f.select :role, options_from_collection_for_select(User.roles.humans, :first, :second),
+                     { prompt: "Todos los roles" }, { data: { reflex: 'change->Tabular#submit' }, class:'form-control form-control-sm mr-md-2 mb-2' } %>
+        <%= f.select :province_id, options_from_collection_for_select(@search.provinces, :id, :name),
+                     { prompt: "Todas las provincias" }, { data: { reflex: 'change->Tabular#submit' }, class:'form-control form-control-sm mr-md-2 mb-2' } %>
+        <%= f.select :department_id, options_from_collection_for_select(@search.departments, :id, :name),
+                     { prompt: "Todas las zonas" }, { data: { reflex: 'change->Tabular#submit' }, class:'form-control form-control-sm mr-md-2 mb-2' } %>
+        <%= f.select :locality_id, options_from_collection_for_select(@search.localities, :id, :name),
+                     { prompt: "Todas las localidades" }, { data: { reflex: 'change->Tabular#submit' }, class:'form-control form-control-sm mr-md-2 mb-2' } %>
+        <%= f.text_field :text, placeholder: 'Buscar...', class: 'form-control form-control-sm',
+                         data: { controller: "tabular", action: 'input->tabular#search' } %>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="row" data-controller="tabular">
-  <div class="col-12">
-    <div class="form-group mb-2 d-md-inline-flex d-sm-flex">
-      <%= text_field_tag :search, @search, placeholder: 'Buscar...', class: 'form-control form-control-sm',
-                         data: { action: 'input->tabular#search', target: 'tabular.search' } %>
-    </div>
-    <button class="btn btn-primary" data-action="click->tabular#clean">Limpiar filtros</button>
-  </div>
-</div>
-
-<div id="user-listing">
   <div class="row">
     <div class="col d-flex justify-content-between align-items-center">
       <span>Mostrando <%= pluralize(@pagy.count, 'colaborador', plural: 'colaboradores') %></span>
@@ -117,4 +108,4 @@
       <%= render 'shared/paginator' %>
     </div>
   </div>
-</div>
+<% end %>

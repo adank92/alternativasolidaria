@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :authenticate_admin!
-  before_action :set_user_filters
 
   def index
-    @pagy, @records = pagy(find_users, page: @page)
+    @search = UserSearch.new(user_seach_params)
+    @pagy, @records = pagy(@search.execute, page: @page)
   end
 
   def edit
@@ -27,22 +27,8 @@ class UsersController < ApplicationController
     redirect_to root_path unless current_user.admin?
   end
 
-  def set_user_filters
-    @status = session[:status].to_s
-    @week = session[:week].to_s
-    @role = session[:role].to_s
-    @province = session[:province].to_s
-    @department = session[:department].to_s
-    @departments = session[:departments] || Department.all
-    @locality = session[:locality].to_s
-    @localities = session[:localities] || Locality.all
-    @search = session[:search]
-    @page = (session[:page] || 1).to_i
-  end
-
-  def find_users
-    User.where_status(@status).available_for_week(@week).where_role(@role).where_province(@province)
-        .where_department(@department).where_locality(@locality).search(@search)
+  def user_seach_params
+    params.fetch(:user_search, {}).permit(:status, :week, :role, :province_id, :department_id, :locality_id, :text)
   end
 
   def update_user_params
