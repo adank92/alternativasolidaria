@@ -1,10 +1,7 @@
-class UsersController < ApplicationController
-  before_action :authenticate_user!
-  before_action :authenticate_admin!
-
+class UsersController < AdminController
   def index
     @search = UserSearch.new(user_seach_params)
-    @pagy, @records = pagy(@search.execute, page: @page)
+    @pagy, @records = pagy(@search.execute, page: @search.page)
   end
 
   def edit
@@ -23,12 +20,8 @@ class UsersController < ApplicationController
 
   private
 
-  def authenticate_admin!
-    redirect_to root_path unless current_user.admin?
-  end
-
   def user_seach_params
-    params.fetch(:user_search, {}).permit(:status, :week, :role, :province_id, :department_id, :locality_id, :text)
+    params.fetch(:search, {}).permit(:status, :week, :role, :province_id, :department_id, :locality_id, :text, :page)
   end
 
   def update_user_params

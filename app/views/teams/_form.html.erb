@@ -1,0 +1,32 @@
+<%= bootstrap_form_for(@team) do |f| %>
+  <%= f.hidden_field :id %>
+  <div class="form-row">
+    <%= f.text_field :name, wrapper: { class: 'col-6' }, data: { reflex: 'change->Team#submit' } %>
+    <%= f.date_field :drop_off_date, wrapper: { class: 'col' }, data: { reflex: 'change->Team#submit' } %>
+    <%= f.date_field :pick_up_date, wrapper: { class: 'col' }, data: { reflex: 'change->Team#submit' } %>
+  </div>
+  <% if @team.persisted? %>
+    <div class="form-row">
+      <div class="form-group col">
+        <%= f.label :chefs %>
+        <%= render 'users_table', users: @team.chefs %>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col">
+        <%= f.label :distributors %>
+        <%= render 'users_table', users: @team.distributors %>
+        <%= link_to "Modificar colaboradores", team_collaborations_path(@team) %>
+      </div>
+    </div>
+  <% end %>
+  <div class="form-row">
+    <%= f.text_area :destination, wrapper: { class: 'col' }, data: { reflex: 'change->Team#submit' } %>
+    <%= f.text_area :notes, wrapper: { class: 'col' }, data: { reflex: 'change->Team#submit' } %>
+  </div>
+  <div class="form-row">
+    <div class="form-group col">
+      <%= f.submit 'Guardar', class: "btn btn-primary mt-3" %>
+    </div>
+  </div>
+<% end %>

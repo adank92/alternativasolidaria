@@ -4,7 +4,7 @@ namespace :users do
   task :import => :environment do
     User.transaction do
       CSV.read('voluntarios1.csv').each_with_index do |row, i|
-        roles = (row[0].strip.downcase == 'cocinero') ? [:chef] : [:delivery]
+        roles = (row[0].strip.downcase == 'cocinero') ? [:chef] : [:distributor]
         status = case row[1].strip.downcase
                  when 'activo'
                    'active'

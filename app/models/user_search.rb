@@ -1,6 +1,7 @@
 class UserSearch
   include ActiveModel::Model
-  attr_accessor :status, :week, :role, :province_id, :department_id, :locality_id, :text, :departments, :localities
+  attr_accessor :status, :week, :role, :province_id, :department_id, :locality_id, :text, :departments, :localities,
+                :page
 
   def execute
     User.where_status(status).available_for_week(week).where_role(role).where_province(province_id)
