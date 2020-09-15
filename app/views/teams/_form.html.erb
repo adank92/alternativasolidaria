@@ -9,13 +9,13 @@
     <div class="form-row">
       <div class="form-group col">
         <%= f.label :chefs %>
-        <%= render 'users_table', users: @team.chefs %>
+        <%= render 'collaborations_table', f: f, collaborations: @team.chef_collaborations %>
       </div>
     </div>
     <div class="form-row">
       <div class="form-group col">
         <%= f.label :distributors %>
-        <%= render 'users_table', users: @team.distributors %>
+        <%= render 'collaborations_table', f: f, collaborations: @team.distributor_collaborations %>
         <%= link_to "Modificar colaboradores", team_collaborations_path(@team) %>
       </div>
     </div>

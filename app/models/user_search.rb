@@ -5,7 +5,7 @@ class UserSearch
 
   def execute
     User.where_status(status).available_for_week(week).where_role(role).where_province(province_id)
-        .where_department(department_id).where_locality(locality_id).search(text)
+        .where_department(department_id).where_locality(locality_id).search(text).includes(:department, :locality, :province)
   end
 
   def province

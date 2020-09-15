@@ -18,6 +18,6 @@ class TeamReflex < ApplicationReflex
   end
 
   def team_params
-    params.require(:team).permit(:name, :drop_off_date, :pick_up_date, :destination, :notes)
+    params.require(:team).permit(:name, :drop_off_date, :pick_up_date, :destination, :notes, collaborations_attributes: [:id, :meal_quantity])
   end
 end

@@ -25,7 +25,7 @@ comuna = Department.create(name: "Comuna 3", province: caba)
 end
 
 comuna = Department.create(name: "Comuna 4", province: caba)
-['Boca', 'Barracas', 'Parque Patricios', 'Nueva Pompeya'].each do |name|
+['La Boca', 'Barracas', 'Parque Patricios', 'Nueva Pompeya'].each do |name|
   Locality.create(name: name, department: comuna)
 end
 
@@ -83,12 +83,12 @@ end
 # GBA
 
 comuna = Department.create(name: "Zona Oeste 1", province: buenos_aires)
-['Ramos Mejía', 'Lomas del Mirador', 'Isidro Casanova', 'Villa Luzuriaga', 'Ciudadela', 'Gregorio de Laferrere', 'San Justo'].each do |name|
+['Ramos Mejía', 'Lomas del Mirador', 'Isidro Casanova', 'Villa Luzuriaga', 'Gregorio de Laferrere', 'San Justo', 'Ciudadela'].each do |name|
   Locality.create(name: name, department: comuna)
 end
 
 comuna = Department.create(name: "Zona Oeste 2", province: buenos_aires)
-['Ituzaingó', 'Caseros', 'Castelar', 'Merlo', 'Ciudadela', 'Gregorio de Laferrere', 'San Justo'].each do |name|
+['Ituzaingó', 'Caseros', 'Castelar', 'Merlo'].each do |name|
   Locality.create(name: name, department: comuna)
 end
 

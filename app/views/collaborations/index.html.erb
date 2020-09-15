@@ -72,7 +72,7 @@
               </thead>
               <tbody>
               <% @records.each do |user| %>
-                <tr>
+                <tr id="<%= dom_id(user) %>">
                   <td>
                     <div class="d-flex">
                       <div class="mr-2">
@@ -80,9 +80,9 @@
                       </div>
                       <% user.roles.each_with_index do |role,index| %>
                         <% if @team.has_collaborator?(user, as: role) %>
-                          <%= link_to role_icon(role, index, 'text-success'), '#', data: { reflex: 'click->Collaboration#destroy', user_id: user.id, role: role } %>
+                          <%= link_to role_icon(role, index, 'text-success'), '#', data: { reflex: 'click->Collaboration#destroy', reflex_root: "##{dom_id(user)}", user_id: user.id, role: role } %>
                         <% else %>
-                          <%= link_to role_icon(role, index, 'text-dark'), '#', data: { reflex: 'click->Collaboration#create', user_id: user.id, role: role } %>
+                          <%= link_to role_icon(role, index, 'text-dark'), '#', data: { reflex: 'click->Collaboration#create', reflex_root: "##{dom_id(user)}", user_id: user.id, role: role } %>
                         <% end %>
                       <% end %>
                     </div>
