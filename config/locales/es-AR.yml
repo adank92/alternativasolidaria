@@ -35,6 +35,8 @@ es-AR:
         name: Nombre
         drop_off_date: Fecha de entrega
         pick_up_date: Fecha de retiro
+        drop_off_time_range: Rango horario de entrega
+        pick_up_time_range: Rango horario de retiro
         chefs: Cocineros
         distributors: Distribuidores
         destination: Destinos

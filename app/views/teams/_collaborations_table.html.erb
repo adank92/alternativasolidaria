@@ -53,10 +53,22 @@
       </td>
       <td>
         <%= f.fields_for :collaborations, c do |chef_fields| %>
-          <%= chef_fields.number_field :meal_quantity, class: 'form-control-sm', style: 'max-width: 60px', hide_label: true, data: { reflex: 'change->Team#submit' } %>
+          <%= chef_fields.number_field :meal_quantity, class: 'form-control-sm mr-0', wrapper_class: 'mb-0', style: 'max-width: 60px', hide_label: true, data: { reflex: 'change->Team#submit' } %>
         <% end %>
       </td>
     </tr>
   <% end %>
+    <tfoot>
+      <tr>
+        <th colspan="6">
+        </th>
+        <th>
+          Total
+        </th>
+        <th>
+          <%= collaborations.sum(:meal_quantity) %>
+        </th>
+      </tr>
+    </tfoot>
   </tbody>
 </table>

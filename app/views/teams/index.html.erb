@@ -41,6 +41,9 @@
                   Fecha de retiro
                 </th>
                 <th scope="col">
+                  Cantidad
+                </th>
+                <th scope="col">
                   Destinos
                 </th>
                 <th scope="col">
@@ -61,6 +64,9 @@
                   </td>
                   <td>
                     <%= team.pick_up_date %>
+                  </td>
+                  <td>
+                    <%= team.chef_collaborations.sum(:meal_quantity) %>
                   </td>
                   <td>
                     <%= team.destination %>
