@@ -66,13 +66,13 @@
                     <% end %>
                   </td>
                   <td>
-                    <%= team.drop_off_date %>
+                    <%= readable_date(team.drop_off_date) %>
                   </td>
                   <td>
                     <%= collaborator_names(team.drop_off_collaborators) %>
                   </td>
                   <td>
-                    <%= team.pick_up_date %>
+                    <%= readable_date(team.pick_up_date) %>
                   </td>
                   <td>
                     <%= collaborator_names(team.pick_up_collaborators) %>
