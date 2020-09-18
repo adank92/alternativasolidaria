@@ -11,8 +11,18 @@ module UsersHelper
     ("<i class='fas fa-user-times text-danger' title='Inactivo'></i>").html_safe
   end
 
-  def role_icon(role, index, color = '')
-    return ("<i class='fas fa-pizza-slice #{color} #{"ml-2" if index.equal?(1)}' style='font-size: 1.5em' title='Cocinero'></i>").html_safe if role == :chef
-    ("<i class='fas fa-truck #{color} #{"ml-2" if index.equal?(1)}' style='font-size: 1.5em' title='Repartidor'></i>").html_safe
+  def role_icon(role, color = '')
+    case role
+    when :chef
+      ("<i class='fas fa-pizza-slice #{color}' style='font-size: 1.5em' title='Cocina'></i>").html_safe
+    when :distributor
+      ("<i class='fas fa-truck #{color}' style='font-size: 1.5em' title='Reparte'></i>").html_safe
+    when :drop_off
+      ("<i class='fas fa-box-open #{color}' style='font-size: 1.5em' title='Entrega'></i>").html_safe
+    when :pick_up
+      ("<i class='fas fa-box #{color}' style='font-size: 1.5em' title='Retira'></i>").html_safe
+    else
+      ''
+    end
   end
 end

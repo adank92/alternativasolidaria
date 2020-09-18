@@ -38,13 +38,19 @@
                   Fecha de entrega
                 </th>
                 <th scope="col">
+                  Entrega
+                </th>
+                <th scope="col">
                   Fecha de retiro
                 </th>
                 <th scope="col">
-                  Cantidad
+                  Retira
                 </th>
                 <th scope="col">
                   Destinos
+                </th>
+                <th scope="col">
+                  Cantidad
                 </th>
                 <th scope="col">
                 </th>
@@ -63,13 +69,19 @@
                     <%= team.drop_off_date %>
                   </td>
                   <td>
+                    <%= collaborator_names(team.drop_off_collaborators) %>
+                  </td>
+                  <td>
                     <%= team.pick_up_date %>
                   </td>
                   <td>
-                    <%= team.chef_collaborations.sum(:meal_quantity) %>
+                    <%= collaborator_names(team.pick_up_collaborators) %>
                   </td>
                   <td>
-                    <%= team.destination %>
+                    <%= readable_destination(team.destination) %>
+                  </td>
+                  <td>
+                    <%= team.chef_collaborations.sum(:meal_quantity) %>
                   </td>
                   <td>
                     <%= link_to '<i class="fas fa-trash"></i>'.html_safe, team_path(team), method: :delete, data: { confirm: 'Estas seguro/a?' } %>

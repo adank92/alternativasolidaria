@@ -25,4 +25,8 @@ class User < ApplicationRecord
     query = sanitize_sql_like(query)
     [:name, :email, :address, :phone].map { |field| where(arel_table[field].matches("%#{query}%")) }.reduce(&:or)
   }
+
+  def collaboration_roles
+    roles.flat_map { |r| r == :distributor ? [:drop_off, :pick_up] : r }
+  end
 end

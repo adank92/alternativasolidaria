@@ -74,15 +74,13 @@
               <% @records.each do |user| %>
                 <tr id="<%= dom_id(user) %>">
                   <td>
-                    <div class="d-flex">
-                      <div class="mr-2">
-                        <%= status_icon(user.status) %>
-                      </div>
-                      <% user.roles.each_with_index do |role,index| %>
+                    <div class="d-flex justify-content-between">
+                      <%= status_icon(user.status) %>
+                      <% user.collaboration_roles.each do |role| %>
                         <% if @team.has_collaborator?(user, as: role) %>
-                          <%= link_to role_icon(role, index, 'text-success'), '#', data: { reflex: 'click->Collaboration#destroy', reflex_root: "##{dom_id(user)}", user_id: user.id, role: role } %>
+                          <%= link_to role_icon(role, 'text-success'), '#', data: { reflex: 'click->Collaboration#destroy', reflex_root: "##{dom_id(user)}", user_id: user.id, role: role } %>
                         <% else %>
-                          <%= link_to role_icon(role, index, 'text-dark'), '#', data: { reflex: 'click->Collaboration#create', reflex_root: "##{dom_id(user)}", user_id: user.id, role: role } %>
+                          <%= link_to role_icon(role, 'text-dark'), '#', data: { reflex: 'click->Collaboration#create', reflex_root: "##{dom_id(user)}", user_id: user.id, role: role } %>
                         <% end %>
                       <% end %>
                     </div>

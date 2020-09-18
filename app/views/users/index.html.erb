@@ -65,12 +65,10 @@
       <% @records.each do |user| %>
         <tr>
           <td>
-            <div class="d-flex">
-              <div class="mr-2">
-                <%= status_icon(user.status) %>
-              </div>
-              <% user.roles.each_with_index do |role,index| %>
-               <%= role_icon(role, index) %>
+            <div class="d-flex justify-content-between">
+              <%= status_icon(user.status) %>
+              <% user.roles.each do |role| %>
+               <%= role_icon(role) %>
               <% end %>
             </div>
           </td>
