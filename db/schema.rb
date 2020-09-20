@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_06_171114) do
+ActiveRecord::Schema.define(version: 2020_09_12_211440) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,19 @@ ActiveRecord::Schema.define(version: 2020_09_06_171114) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["province_id"], name: "index_departments_on_province_id"
+  end
+
+  create_table "destinations", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "address", null: false
+    t.string "reference_name"
+    t.integer "meal_quantity"
+    t.bigint "locality_id", null: false
+    t.bigint "province_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["locality_id"], name: "index_destinations_on_locality_id"
+    t.index ["province_id"], name: "index_destinations_on_province_id"
   end
 
   create_table "localities", force: :cascade do |t|
@@ -77,6 +90,8 @@ ActiveRecord::Schema.define(version: 2020_09_06_171114) do
   add_foreign_key "available_weeks", "users"
   add_foreign_key "available_weeks", "weeks"
   add_foreign_key "departments", "provinces"
+  add_foreign_key "destinations", "localities"
+  add_foreign_key "destinations", "provinces"
   add_foreign_key "localities", "departments"
   add_foreign_key "users", "localities"
 end
