@@ -1,0 +1,16 @@
+<div class="card shadow rounded">
+  <div class="card-header">
+    <div class="d-flex align-content-center">
+      <h3 class="m-0">Nuevo equipo</h3>
+      <% if @team.persisted? %>
+        <div class="ml-auto"><%= link_to "Modificar colaboradores", team_collaborations_path(@team), class: 'btn btn-primary' %></div>
+        <div class="ml-2"><%= link_to 'Volver', teams_path, class: 'btn btn-primary' %></div>
+      <% else %>
+        <div class="ml-auto"><%= link_to 'Volver', teams_path, class: 'btn btn-primary' %></div>
+      <% end %>
+    </div>
+  </div>
+  <div class="card-body">
+    <%= render 'form', team: @team %>
+  </div>
+</div>

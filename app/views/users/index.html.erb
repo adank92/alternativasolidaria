@@ -1,8 +1,9 @@
 <% content_for(:container) { 'container-fluid' } %>
-<%= form_with model: @search, url: users_path do |f| %>
+<%= form_with model: @search, scope: :search, url: users_path do |f| %>
   <div class="row">
     <div class="col-12">
       <div class="form-group mb-2 d-md-inline-flex d-sm-flex">
+        <%= f.hidden_field :page %>
         <%= f.select :status, options_for_reflex_select(status_options, :first, :last, @search.status, prompt: "Todas los estados"), {}, { data: { reflex: 'change->Tabular#submit' }, class:'form-control form-control-sm mr-md-2 mb-2' } %>
         <%= f.select :week, options_for_reflex_select(Week.for_current_month, :id, :name, @search.week, prompt: "Todas las semanas"), {}, { data: { reflex: 'change->Tabular#submit' }, class:'form-control form-control-sm mr-md-2 mb-2' } %>
         <%= f.select :role, options_for_reflex_select(User.roles.humans, :first, :second, @search.role, prompt: "Todos los roles"), {}, { data: { reflex: 'change->Tabular#submit' }, class:'form-control form-control-sm mr-md-2 mb-2' } %>
@@ -64,12 +65,10 @@
       <% @records.each do |user| %>
         <tr>
           <td>
-            <div class="d-flex">
-              <div class="mr-2">
-                <%= status_icon(user.status) %>
-              </div>
-              <% user.roles.each_with_index do |role,index| %>
-               <%= role_icon(role, index) %>
+            <div class="d-flex justify-content-between">
+              <%= status_icon(user.status) %>
+              <% user.roles.each do |role| %>
+               <%= role_icon(role) %>
               <% end %>
             </div>
           </td>

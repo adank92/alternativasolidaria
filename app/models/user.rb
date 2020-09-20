@@ -2,13 +2,14 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   enum status: [:fresh, :active, :inactive]
-  flag :roles, [:chef, :delivery]
+  flag :roles, [:chef, :distributor]
 
   belongs_to :locality
   has_one :department, through: :locality
   has_one :province, through: :department
   has_many :available_weeks, dependent: :destroy
   has_many :weeks, through: :available_weeks
+  has_and_belongs_to_many :teams
 
   validates_presence_of :name, :roles, :address
   validates :phone, numericality: true
@@ -24,4 +25,8 @@ class User < ApplicationRecord
     query = sanitize_sql_like(query)
     [:name, :email, :address, :phone].map { |field| where(arel_table[field].matches("%#{query}%")) }.reduce(&:or)
   }
+
+  def collaboration_roles
+    roles.flat_map { |r| r == :distributor ? [:drop_off, :pick_up] : r }
+  end
 end

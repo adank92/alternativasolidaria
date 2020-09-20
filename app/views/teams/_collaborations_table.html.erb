@@ -1,0 +1,76 @@
+<table class="table table-striped table-bordered table-sm mb-0">
+  <thead class="thead-light">
+  <tr>
+    <th scope="col">
+      Nombre
+    </th>
+    <th scope="col">
+      Provincia
+    </th>
+    <th scope="col">
+      Zona/Comuna
+    </th>
+    <th scope="col">
+      Localidad
+    </th>
+    <th scope="col">
+      Dirección
+    </th>
+    <th scope="col">
+      Celular
+    </th>
+    <th scope="col">
+      Email
+    </th>
+    <th scope="col">
+      Viandas
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+  <% collaborations.each do |c| %>
+    <tr>
+      <td>
+        <%= link_to c.user.name, edit_user_path(c.user) %>
+      </td>
+      <td>
+        <%= c.user.province.name %>
+      </td>
+      <td>
+        <%= c.user.department.name %>
+      </td>
+      <td>
+        <%= c.user.locality.name %>
+      </td>
+      <td>
+        <%= c.user.address %>
+      </td>
+      <td>
+        <%= c.user.phone %>
+      </td>
+      <td>
+        <%= c.user.email %>
+      </td>
+      <td>
+        <%= f.fields_for :collaborations, c do |chef_fields| %>
+          <%= chef_fields.number_field :meal_quantity, class: 'form-control-sm mr-0', wrapper_class: 'mb-0', style: 'max-width: 60px', hide_label: true, data: { reflex: 'change->Team#submit' } %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  <% if collaborations.count > 1 %>
+    <tfoot>
+      <tr>
+        <th colspan="6">
+        </th>
+        <th>
+          Total
+        </th>
+        <th>
+          <%= collaborations.sum(:meal_quantity) %>
+        </th>
+      </tr>
+    </tfoot>
+  <% end %>
+  </tbody>
+</table>

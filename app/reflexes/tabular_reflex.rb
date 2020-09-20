@@ -2,10 +2,10 @@
 
 class TabularReflex < ApplicationReflex
   def submit
-    @page = 1
+    params[:search][:page] = 1
   end
 
   def change_page
-    @page = element.data_attributes["page"].to_i
+    params[:search][:page] = element.data_attributes["page"].to_i
   end
 end

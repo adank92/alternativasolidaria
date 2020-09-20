@@ -28,6 +28,7 @@
         <a class="p-2 text-dark" href="#">Recetas</a>
         <% if current_user&.admin? %>
           <%= link_to "Colaboradores", users_path, class: 'btn btn-info' %>
+          <%= link_to "Equipos", teams_path, class: 'btn btn-info' %>
         <% end %>
       </nav>
       <div class="btn-toolbar" role="toolbar" aria-label="Botones de acceso">
@@ -72,7 +73,7 @@
                 <i class="fab fa-instagram fa-lg white-text fa-2x"></i>
               </a>
               <div class="mt-4">
-                <p class="text-dark"><strong><i class="fas fa-mobile-alt fa-lg white-text mr-3 fa-2x" style="font-size:1.75em;"></i>(11) 4041-3638 <br><i class="far fa-envelope fa-lg white-text mr-3 fa-2x" style="font-size:1.75em;"></i>somosalternativasolidaria@gmail.com</strong></p>
+                <p class="text-dark"><strong><i class="far fa-envelope fa-lg white-text mr-3 fa-2x" style="font-size:1.75em;"></i>somosalternativasolidaria@gmail.com</strong></p>
               </div>
             </div>
           </div>

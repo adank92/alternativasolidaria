@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   }
   resources :users, only: [:index, :edit, :update]
   resources :localities, only: [:index]
-  resources :recipes, only: [:index]
+  resources :recipes, onlye: [:index]
   resources :destinations
+  resources :teams do
+    resources :collaborations
+  end
 end
