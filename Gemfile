@@ -35,6 +35,7 @@ gem 'active_flag'
 gem "bootstrap_form", "~> 4.0"
 gem "redis", ">= 4.0", :require => ["redis", "redis/connection/hiredis"]
 gem "hiredis"
+gem 'mailgun-ruby'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

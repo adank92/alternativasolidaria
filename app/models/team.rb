@@ -9,7 +9,6 @@ class Team < ApplicationRecord
   accepts_nested_attributes_for :collaborations
 
   scope :by_pick_up_date, -> (date) { where(pick_up_date: date) if date.present? }
-  scope :by_drop_off_date, -> (date) { where(drop_off_date: date) if date.present? }
   scope :like_name, -> (name) { where(arel_table[:name].matches("%#{name}%")) if name.present? }
 
   def has_collaborator?(user, as:)

@@ -11,7 +11,6 @@
     <%= bootstrap_form_for @search, as: :search, url: teams_path do |f| %>
       <div class="form-row">
         <%= f.hidden_field :page %>
-        <%= f.date_field :drop_off_date, value: @search.drop_off_date, data: { reflex: 'change->tabular#submit' }, wrapper: { class: 'col-2' } %>
         <%= f.date_field :pick_up_date, value: @search.pick_up_date, data: { reflex: 'change->tabular#submit' }, wrapper: { class: 'col-2' } %>
         <%= f.text_field :text, placeholder: 'Buscar...', data: { controller: "tabular", action: 'input->tabular#search' } %>
       </div>
@@ -33,9 +32,6 @@
               <tr>
                 <th scope="col">
                   Nombre
-                </th>
-                <th scope="col">
-                  Fecha de entrega
                 </th>
                 <th scope="col">
                   Entrega
@@ -64,9 +60,6 @@
                     <% unless team.final? %>
                       <small class="font-italic">(borrador)</small>
                     <% end %>
-                  </td>
-                  <td>
-                    <%= readable_date(team.drop_off_date) %>
                   </td>
                   <td>
                     <%= collaborator_names(team.drop_off_collaborators) %>
