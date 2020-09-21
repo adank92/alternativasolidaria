@@ -7,8 +7,7 @@ class DestinationsController < AdminController
   end
 
   def new
-    @destination ||= Destination.new
-    @destination.locality = Locality.first
+    @destination = Destination.new(locality: Locality.first)
   end
 
   def create
