@@ -53,7 +53,7 @@
       </td>
       <td>
         <%= f.fields_for :collaborations, c do |chef_fields| %>
-          <%= chef_fields.number_field :meal_quantity, class: 'form-control-sm mr-0', wrapper_class: 'mb-0', style: 'max-width: 60px', hide_label: true, data: { reflex: 'change->Team#submit' } %>
+          <%= chef_fields.number_field :meal_quantity, class: 'form-control-sm mr-0', wrapper_class: 'mb-0', style: 'max-width: 60px', hide_label: true, data: { reflex: "change->#{c.collaboratable_type}#submit" } %>
         <% end %>
       </td>
     </tr>

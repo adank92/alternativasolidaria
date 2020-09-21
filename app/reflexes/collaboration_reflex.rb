@@ -1,6 +1,6 @@
 class CollaborationReflex < ApplicationReflex
   before_reflex do
-    @team = Team.find(params[:team_id])
+    @team = find_team
     @user_id = element.dataset[:user_id]
     @role = element.dataset[:role]
   end
@@ -11,5 +11,12 @@ class CollaborationReflex < ApplicationReflex
 
   def destroy
     @team.collaborations.destroy_by(user_id: @user_id, role: @role)
+  end
+
+  private
+
+  def find_team
+    return TeamTemplate.find(params[:team_template_id]) if params[:team_template_id].present?
+    Team.find(params[:team_id])
   end
 end

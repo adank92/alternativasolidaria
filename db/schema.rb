@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_20_012207) do
+ActiveRecord::Schema.define(version: 2020_09_21_004541) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,12 +26,13 @@ ActiveRecord::Schema.define(version: 2020_09_20_012207) do
 
   create_table "collaborations", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "team_id", null: false
+    t.bigint "collaboratable_id"
     t.string "role"
     t.integer "meal_quantity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["team_id"], name: "index_collaborations_on_team_id"
+    t.string "collaboratable_type"
+    t.index ["collaboratable_type", "collaboratable_id"], name: "index_collaboratable_type_and_collaboratable_id"
     t.index ["user_id"], name: "index_collaborations_on_user_id"
   end
 
@@ -71,6 +72,14 @@ ActiveRecord::Schema.define(version: 2020_09_20_012207) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "team_templates", force: :cascade do |t|
+    t.string "name"
+    t.text "notes"
+    t.boolean "final", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "teams", force: :cascade do |t|
     t.string "name"
     t.date "pick_up_date"
@@ -80,6 +89,8 @@ ActiveRecord::Schema.define(version: 2020_09_20_012207) do
     t.datetime "updated_at", precision: 6, null: false
     t.text "destination"
     t.string "pick_up_time_range"
+    t.bigint "team_template_id"
+    t.index ["team_template_id"], name: "index_teams_on_team_template_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -112,11 +123,11 @@ ActiveRecord::Schema.define(version: 2020_09_20_012207) do
 
   add_foreign_key "available_weeks", "users"
   add_foreign_key "available_weeks", "weeks"
-  add_foreign_key "collaborations", "teams"
   add_foreign_key "collaborations", "users"
   add_foreign_key "departments", "provinces"
   add_foreign_key "destinations", "localities"
   add_foreign_key "destinations", "provinces"
   add_foreign_key "localities", "departments"
+  add_foreign_key "teams", "team_templates"
   add_foreign_key "users", "localities"
 end

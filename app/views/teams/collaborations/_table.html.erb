@@ -1,0 +1,112 @@
+<%= form_with model: @search, scope: :search, url: users_path do |f| %>
+  <div class="row">
+    <div class="col-12">
+      <div class="form-group mb-2 d-md-inline-flex d-sm-flex">
+        <%= f.hidden_field :page %>
+        <%= f.select :status, options_for_reflex_select(status_options, :first, :last, @search.status, prompt: "Todas los estados"), {}, { data: { reflex: 'change->Tabular#submit' }, class:'form-control form-control-sm mr-md-2 mb-2' } %>
+        <%= f.select :week, options_for_reflex_select(Week.for_current_month, :id, :name, @search.week, prompt: "Todas las semanas"), {}, { data: { reflex: 'change->Tabular#submit' }, class:'form-control form-control-sm mr-md-2 mb-2' } %>
+        <%= f.select :role, options_for_reflex_select(User.roles.humans, :first, :second, @search.role, prompt: "Todos los roles"), {}, { data: { reflex: 'change->Tabular#submit' }, class:'form-control form-control-sm mr-md-2 mb-2' } %>
+        <%= f.select :province_id, options_for_reflex_select(@search.provinces, :id, :name, @search.province_id, prompt: "Todas las provincias"), {}, { data: { reflex: 'change->Tabular#submit' }, class:'form-control form-control-sm mr-md-2 mb-2' } %>
+        <%= f.select :department_id, options_for_reflex_select(@search.departments, :id, :name, @search.department_id, prompt: "Todas las zonas"), {}, { data: { reflex: 'change->Tabular#submit' }, class:'form-control form-control-sm mr-md-2 mb-2' } %>
+        <%= f.select :locality_id, options_for_reflex_select(@search.localities, :id, :name, @search.locality_id, prompt: "Todas las localidades"), {}, { data: { reflex: 'change->Tabular#submit' }, class:'form-control form-control-sm mr-md-2 mb-2' } %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 col-sm-12">
+      <%= f.text_field :text, placeholder: 'Buscar...', class: 'form-control form-control-sm',
+                       data: { controller: "tabular", action: 'input->tabular#search' } %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col d-flex justify-content-between align-items-center mt-3">
+      <span>Mostrando <%= pluralize(@pagy.count, 'colaborador', plural: 'colaboradores') %></span>
+      <div class="float-right">
+        <%= render 'shared/paginator' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+          <thead class="thead-dark">
+          <tr>
+            <th scope="col">
+            </th>
+            <th scope="col">
+              Nombre
+            </th>
+            <th scope="col">
+              Provincia
+            </th>
+            <th scope="col">
+              Zona/Comuna
+            </th>
+            <th scope="col">
+              Localidad
+            </th>
+            <th scope="col">
+              Dirección
+            </th>
+            <th scope="col">
+              Celular
+            </th>
+            <th scope="col">
+              Email
+            </th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @records.each do |user| %>
+            <tr id="<%= dom_id(user) %>">
+              <td>
+                <div class="d-flex justify-content-between">
+                  <%= status_icon(user.status) %>
+                  <% user.collaboration_roles.each do |role| %>
+                    <% if @team.has_collaborator?(user, as: role) %>
+                      <%= link_to role_icon(role, 'text-success'), '#', data: { reflex: 'click->Collaboration#destroy', reflex_root: "##{dom_id(user)}", user_id: user.id, role: role } %>
+                    <% else %>
+                      <%= link_to role_icon(role, 'text-dark'), '#', data: { reflex: 'click->Collaboration#create', reflex_root: "##{dom_id(user)}", user_id: user.id, role: role } %>
+                    <% end %>
+                  <% end %>
+                </div>
+              </td>
+              <td>
+                <%= link_to user.name, edit_user_path(user) %>
+              </td>
+              <td>
+                <%= user.province.name %>
+              </td>
+              <td>
+                <%= user.department.name %>
+              </td>
+              <td>
+                <%= user.locality.name %>
+              </td>
+              <td>
+                <%= user.address %>
+              </td>
+              <td>
+                <%= user.phone %>
+              </td>
+              <td>
+                <%= user.email %>
+              </td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="row float-right">
+    <div class="col">
+      <%= render 'shared/paginator' %>
+    </div>
+  </div>
+<% end %>

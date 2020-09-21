@@ -1,6 +1,6 @@
 module TeamsHelper
   def readable_destination(destination)
-    destination.gsub("\r\n", " -- ")
+    destination&.gsub("\r\n", " -- ")
   end
 
   def readable_date(date)

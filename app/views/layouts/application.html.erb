@@ -29,6 +29,7 @@
         <% if current_user&.admin? %>
           <%= link_to "Colaboradores", users_path, class: 'btn btn-info' %>
           <%= link_to "Equipos", teams_path, class: 'btn btn-info' %>
+          <%= link_to "Plantillas", team_templates_path, class: 'btn btn-info' %>
         <% end %>
       </nav>
       <div class="btn-toolbar" role="toolbar" aria-label="Botones de acceso">

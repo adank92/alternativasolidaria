@@ -1,13 +1,13 @@
 <div class="card shadow rounded">
   <div class="card-header">
     <div class="d-flex align-content-center align-items-center">
-      <h3 class="m-0">Nuevo equipo</h3>
+      <h3 class="m-0">Nueva plantilla</h3>
       <div class="ml-auto"><%= link_to "Modificar colaboradores", nil, class: 'btn btn-primary disabled' %></div>
-      <div class="ml-2"><%= link_to 'Volver', teams_path, class: 'btn btn-primary' %></div>
+      <div class="ml-2"><%= link_to 'Volver', team_templates_path, class: 'btn btn-primary' %></div>
     </div>
   </div>
   <div class="card-body">
-    <%= bootstrap_form_for(@team) do |f| %>
+    <%= bootstrap_form_for(@team_template) do |f| %>
       <div class="form-row">
         <%= f.text_field :name, wrapper: { class: 'col' } %>
       </div>

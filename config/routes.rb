@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   resources :recipes, onlye: [:index]
   resources :destinations
   resources :teams do
-    resources :collaborations
+    resources :collaborations, controller: 'teams/collaborations'
+  end
+  resources :team_templates do
+    resources :collaborations, controller: 'team_templates/collaborations'
+    resources :teams, only: [:create], controller: 'team_templates/teams'
   end
 end

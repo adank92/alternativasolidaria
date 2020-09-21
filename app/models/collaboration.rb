@@ -1,5 +1,5 @@
 class Collaboration < ApplicationRecord
-  belongs_to :team
+  belongs_to :collaboratable, polymorphic: true
   belongs_to :user
 
   default_scope -> { order(:id) }

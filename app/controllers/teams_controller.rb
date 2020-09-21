@@ -7,14 +7,14 @@ class TeamsController < AdminController
   end
 
   def new
-    @team ||= Team.new
+    @team = Team.new
   end
 
   def create
     @team = Team.new(team_params)
 
     if @team.save
-      redirect_to action: :index
+      redirect_to edit_team_path(@team)
     else
       render :new
     end
@@ -30,7 +30,7 @@ class TeamsController < AdminController
 
   def destroy
     @team.destroy
-    redirect_to teams_url, notice: 'El equipo se borró exitosamente.'
+    redirect_to action: :index, notice: 'El equipo se borró exitosamente.'
   end
 
   private
