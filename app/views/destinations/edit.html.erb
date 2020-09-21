@@ -1,9 +1,8 @@
 <div class="card shadow rounded">
   <div class="card-header">
-    <div class="d-flex align-content-center">
-      <h3 class="m-0">
-        <%= @destination.name %>
-      </h3>
+    <div class="d-flex align-content-center align-items-center">
+      <h3 class="m-0"><%= @destination.name %></h3>
+      <div class="ml-auto"><%= link_to 'Volver', destinations_path, class: 'btn btn-primary' %></div>
     </div>
   </div>
   <div class="card-body">

@@ -42,6 +42,13 @@ es-AR:
       team_template:
         name: Nombre
         notes: Notas
+      destination:
+        name: Nombre
+        meal_quantity: Cantidad de viandas
+        province_id: Provincia
+        locality_id: Localidad
+        address: Dirección
+        phone: Número de teléfono
     enums:
       user:
         status:
