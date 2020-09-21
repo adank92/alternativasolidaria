@@ -16,12 +16,13 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag  'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag  'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag asset_path('favicon.ico') %>
   </head>
 
 
   <body class="<%= current_page?(root_url) ? 'bg-white' : 'bg-light '%>">
     <div class="d-flex flex-column flex-md-row align-items-center p-1 px-md-4 bg-white mb-4 <%= current_page?(root_url) ? '' : 'shadow-sm'%>">
-      <h5 class="my-0 mr-md-auto font-weight-normal"><img style="height: 75px;" src='<%= asset_path("logo.jpg") %>' /><%= link_to "Alternativa Solidaria", root_path, class: 'p-2 text-dark' %></h5>
+      <h5 class="my-0 mr-md-auto font-weight-normal d-flex flex-column flex-md-row align-items-center"><img style="height: 50px;" src='<%= asset_path("rainbow-logo.png") %>' /><%= link_to "Alternativa Solidaria", root_path, class: 'p-2 text-dark title text-decoration-none' %></h5>
       <nav class="my-2 my-md-0 mr-md-3">
         <a class="p-2 text-dark" href="#who-we-are">Quienes Somos</a>
         <a class="p-2 text-dark" href="#how-we-do-it">Como Funcionamos</a>
@@ -38,7 +39,7 @@
           <%= link_to "Salir", destroy_user_session_path, method: :delete, class:"btn btn-primary" %>
         <% else %>
           <%= link_to "Ingresar", new_user_session_path, class:"btn btn-outline-primary mr-2" %>
-          <%= link_to "Sumate", new_user_registration_path, class:"btn btn-primary" %>
+          <%= link_to "Sumate", new_user_registration_path, class:"btn btn-primary sumate" %>
         <% end %>
       </div>
     </div>

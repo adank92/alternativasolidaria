@@ -50,12 +50,10 @@ ActiveRecord::Schema.define(version: 2020_09_21_004541) do
     t.string "reference_name"
     t.integer "meal_quantity"
     t.bigint "locality_id", null: false
-    t.bigint "province_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "phone"
     t.index ["locality_id"], name: "index_destinations_on_locality_id"
-    t.index ["province_id"], name: "index_destinations_on_province_id"
   end
 
   create_table "localities", force: :cascade do |t|
@@ -126,7 +124,6 @@ ActiveRecord::Schema.define(version: 2020_09_21_004541) do
   add_foreign_key "collaborations", "users"
   add_foreign_key "departments", "provinces"
   add_foreign_key "destinations", "localities"
-  add_foreign_key "destinations", "provinces"
   add_foreign_key "localities", "departments"
   add_foreign_key "teams", "team_templates"
   add_foreign_key "users", "localities"
