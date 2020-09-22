@@ -3,6 +3,8 @@ class Destination < ApplicationRecord
   has_one :department, through: :locality
   has_one :province, through: :department
 
+  has_many :team_destinations, dependent: :destroy
+
   validates_presence_of :name, :address
   validates :phone, numericality: true
 
