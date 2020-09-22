@@ -1,0 +1,13 @@
+<% content_for(:container) { 'container-fluid' } %>
+
+<div class="card shadow rounded">
+  <div class="card-header">
+    <div class="d-flex align-content-center">
+      <h3 class="m-0"><%= @team.name %></h3>
+      <div class="ml-auto"><%= link_to 'Volver a la plantilla', edit_team_template_path(@team), class: 'btn btn-primary' %></div>
+    </div>
+  </div>
+  <div class="card-body">
+    <%= render 'teams/team_destinations/table' %>
+  </div>
+</div>

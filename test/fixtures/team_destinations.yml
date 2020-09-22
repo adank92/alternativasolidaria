@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  team: one
+  destination: one
+  meal_quantity: 1
+
+two:
+  team: two
+  destination: two
+  meal_quantity: 1

@@ -1,6 +1,6 @@
 <%= bootstrap_form_for(@team) do |f| %>
   <div class="form-row">
-    <%= f.text_field :name, wrapper: { class: 'col-6' }, data: { reflex: 'change->Team#submit' } %>
+    <%= f.text_field :name, wrapper: { class: 'col' }, data: { reflex: 'change->Team#submit' } %>
   </div>
   <h5 class="mb-3">Cocinan</h5>
   <div class="form-row">
@@ -24,8 +24,14 @@
       <%= render 'collaborations_table', f: f, collaborations: @team.pick_up_collaborations %>
     </div>
   </div>
+  <h5 class="mb-3">Destinos</h5>
   <div class="form-row">
-    <%= f.text_area :destination, wrapper: { class: 'col' }, data: { reflex: 'change->Team#submit' } %>
+    <div class="form-group col">
+      <%= render 'team_destinations_table', f: f, team_destinations: @team.team_destinations %>
+    </div>
+  </div>
+  <div class="form-row">
+    <%= f.text_area :intermediate_destination, wrapper: { class: 'col' }, data: { reflex: 'change->Team#submit' } %>
     <%= f.text_area :notes, wrapper: { class: 'col' }, data: { reflex: 'change->Team#submit' } %>
   </div>
   <div class="form-row">

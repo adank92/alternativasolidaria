@@ -15,6 +15,6 @@ class TeamTemplateReflex < ApplicationReflex
   end
 
   def team_params
-    params.require(:team_template).permit(:name, :notes, collaborations_attributes: [:id, :meal_quantity])
+    params.require(:team_template).permit(:name, :notes, collaborations_attributes: [:id, :meal_quantity], team_destinations_attributes: [:id, :meal_quantity])
   end
 end

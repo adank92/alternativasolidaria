@@ -40,7 +40,7 @@ class TeamsController < AdminController
   end
 
   def team_params
-    params.require(:team).permit(:name, :drop_off_date, :pick_up_date, :pick_up_time_range, :destination, :notes, collaborations_attributes: [:id, :meal_quantity])
+    params.require(:team).permit(:name, :drop_off_date, :pick_up_date, :pick_up_time_range, :intermediate_destination, :notes, collaborations_attributes: [:id, :meal_quantity], team_destinations_attributes: [:id, :meal_quantity])
   end
 
   def seach_params

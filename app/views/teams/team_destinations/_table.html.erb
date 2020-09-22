@@ -1,0 +1,96 @@
+<%= form_with model: @search, scope: :search, url: destinations_path do |f| %>
+  <div class="form-group mb-2 d-md-inline-flex d-sm-flex">
+    <%= f.hidden_field :page %>
+    <%= f.select :province_id, options_for_reflex_select(@search.provinces, :id, :name, @search.province_id, prompt: "Todas las provincias"), {}, { data: { reflex: 'change->Tabular#submit' }, class:'form-control form-control-sm mr-md-2 mb-2' } %>
+    <%= f.select :department_id, options_for_reflex_select(@search.departments, :id, :name, @search.department_id, prompt: "Todas las zonas"), {}, { data: { reflex: 'change->Tabular#submit' }, class:'form-control form-control-sm mr-md-2 mb-2' } %>
+    <%= f.select :locality_id, options_for_reflex_select(@search.localities, :id, :name, @search.locality_id, prompt: "Todas las localidades"), {}, { data: { reflex: 'change->Tabular#submit' }, class:'form-control form-control-sm mr-md-2 mb-2' } %>
+    <%= f.text_field :text, placeholder: 'Buscar...', label: "Nombre/Dirección/Teléfono", data: { controller: "tabular", action: 'input->tabular#search' }, class: 'form-control form-control-sm' %>
+  </div>
+
+  <div class="row">
+    <div class="col d-flex justify-content-between align-items-center mt-3">
+      <span>Mostrando <%= pluralize(@pagy.count, 'destino', plural: 'destinos') %></span>
+      <div class="float-right">
+        <%= render 'shared/paginator' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+          <thead class="thead-dark">
+          <tr>
+            <th scope="col">
+            </th>
+            <th scope="col">
+              Nombre
+            </th>
+            <th scope="col">
+              Dirección
+            </th>
+            <th scope="col">
+              Teléfono
+            </th>
+            <th scope="col">
+              Provincia
+            </th>
+            <th scope="col">
+              Zona/Comuna
+            </th>
+            <th scope="col">
+              Localidad
+            </th>
+            <th scope="col">
+              Cantidad
+            </th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @records.each do |destination| %>
+            <tr id="<%= dom_id(destination) %>">
+              <td>
+                <div class="d-flex justify-content-between">
+                  <% if @team.destinations.include?(destination) %>
+                    <%= link_to '<i class="fas fa-map-marker-alt text-success" style="font-size: 1.5em"></i>'.html_safe, '#', data: { reflex: 'click->TeamDestination#destroy', reflex_root: "##{dom_id(destination)}", destination_id: destination.id } %>
+                  <% else %>
+                    <%= link_to '<i class="fas fa-map-marker-alt text-dark" style="font-size: 1.5em"></i>'.html_safe, '#', data: { reflex: 'click->TeamDestination#create', reflex_root: "##{dom_id(destination)}", destination_id: destination.id } %>
+                  <% end %>
+                </div>
+              </td>
+              <td>
+                <%= link_to destination.name, edit_destination_path(destination) %>
+              </td>
+              <td>
+                <%= destination.address %>
+              </td>
+              <td>
+                <%= destination.phone %>
+              </td>
+              <td>
+                <%= destination.province.name %>
+              </td>
+              <td>
+                <%= destination.department.name %>
+              </td>
+              <td>
+                <%= destination.locality.name %>
+              </td>
+              <td>
+                <%= destination.meal_quantity %>
+              </td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="row float-right">
+    <div class="col">
+      <%= render 'shared/paginator' %>
+    </div>
+  </div>
+<% end %>

@@ -8,7 +8,8 @@
           <small class="font-italic">(borrador)</small>
         <% end %>
       </h4>
-      <div class="ml-auto"><%= link_to "Modificar colaboradores", team_template_collaborations_path(@team_template), class: 'btn btn-primary' %></div>
+      <div class="ml-auto"><%= link_to "Colaboradores", team_template_collaborations_path(@team_template), class: 'btn btn-primary' %></div>
+      <div class="ml-2"><%= link_to "Destinos", team_template_team_destinations_path(@team_template), class: 'btn btn-primary' %></div>
       <div class="ml-2"><%= link_to 'Volver', team_templates_path, class: 'btn btn-primary' %></div>
     </div>
   </div>

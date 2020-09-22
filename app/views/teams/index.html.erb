@@ -71,7 +71,7 @@
                     <%= collaborator_names(team.pick_up_collaborators) %>
                   </td>
                   <td>
-                    <%= readable_destination(team.destination) %>
+                    <%= get_destinations(team) %>
                   </td>
                   <td>
                     <%= team.chef_collaborations.sum(:meal_quantity) %>

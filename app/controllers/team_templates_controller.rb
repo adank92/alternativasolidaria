@@ -40,7 +40,7 @@ class TeamTemplatesController < AdminController
   end
 
   def team_template_params
-    params.require(:team_template).permit(:name, :notes, collaborations_attributes: [:id, :meal_quantity])
+    params.require(:team_template).permit(:name, :notes, collaborations_attributes: [:id, :meal_quantity], team_destinations_attributes: [:id, :meal_quantity])
   end
 
   def seach_params

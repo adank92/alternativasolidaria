@@ -37,7 +37,7 @@ es-AR:
         pick_up_date: Fecha
         pick_up_time_range: Rango horario
         distributors: Distribuidores
-        destination: Destinos
+        intermediate_destination: Destino intermedio
         notes: Notas
       team_template:
         name: Nombre

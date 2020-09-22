@@ -1,0 +1,2 @@
+module Teams::DestinationsHelper
+end

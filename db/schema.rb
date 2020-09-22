@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_21_004541) do
+ActiveRecord::Schema.define(version: 2020_09_22_023751) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,17 @@ ActiveRecord::Schema.define(version: 2020_09_21_004541) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "team_destinations", force: :cascade do |t|
+    t.string "team_type"
+    t.bigint "team_id"
+    t.bigint "destination_id", null: false
+    t.integer "meal_quantity"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["destination_id"], name: "index_team_destinations_on_destination_id"
+    t.index ["team_type", "team_id"], name: "index_team_destinations_on_team_type_and_team_id"
+  end
+
   create_table "team_templates", force: :cascade do |t|
     t.string "name"
     t.text "notes"
@@ -85,7 +96,7 @@ ActiveRecord::Schema.define(version: 2020_09_21_004541) do
     t.boolean "final", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.text "destination"
+    t.text "intermediate_destination"
     t.string "pick_up_time_range"
     t.bigint "team_template_id"
     t.index ["team_template_id"], name: "index_teams_on_team_template_id"
@@ -125,6 +136,7 @@ ActiveRecord::Schema.define(version: 2020_09_21_004541) do
   add_foreign_key "departments", "provinces"
   add_foreign_key "destinations", "localities"
   add_foreign_key "localities", "departments"
+  add_foreign_key "team_destinations", "destinations"
   add_foreign_key "teams", "team_templates"
   add_foreign_key "users", "localities"
 end
