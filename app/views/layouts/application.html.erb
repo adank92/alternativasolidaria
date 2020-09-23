@@ -27,7 +27,6 @@
         <% if current_user&.admin? %>
           <%= link_to "Colaboradores", users_path, class: 'btn btn-info' %>
           <%= link_to "Equipos", teams_path, class: 'btn btn-info' %>
-          <%= link_to "Plantillas", team_templates_path, class: 'btn btn-info' %>
           <%= link_to "Destinos", destinations_path, class: 'btn btn-info' %>
         <% else %>
           <a class="p-2 text-dark" href="#who-we-are">Quienes Somos</a>

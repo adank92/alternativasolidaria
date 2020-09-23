@@ -5,8 +5,6 @@ es-AR:
       team_search:
         pick_up_date: Fecha de retiro
         text: Nombre
-      team_template_search:
-        text: Nombre
   activerecord:
     errors:
       messages:
@@ -38,9 +36,6 @@ es-AR:
         pick_up_time_range: Rango horario
         distributors: Distribuidores
         intermediate_destination: Destino intermedio
-        notes: Notas
-      team_template:
-        name: Nombre
         notes: Notas
       destination:
         name: Nombre

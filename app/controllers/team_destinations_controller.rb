@@ -1,8 +1,8 @@
-class Teams::TeamDestinationsController < AdminController
+class TeamDestinationsController < AdminController
   before_action :set_team
 
   def index
-    @search =  DestinationSearch.new(search_params)
+    @search = DestinationSearch.new(search_params)
     @pagy, @records = pagy(@search.execute, page: @search.page)
   end
 

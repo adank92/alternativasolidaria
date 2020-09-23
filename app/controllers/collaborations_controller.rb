@@ -1,4 +1,4 @@
-class Teams::CollaborationsController < AdminController
+class CollaborationsController < AdminController
   before_action :set_team
 
   def index

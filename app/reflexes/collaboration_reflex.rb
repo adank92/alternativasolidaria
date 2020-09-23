@@ -16,7 +16,6 @@ class CollaborationReflex < ApplicationReflex
   private
 
   def find_team
-    return TeamTemplate.find(params[:team_template_id]) if params[:team_template_id].present?
     Team.find(params[:team_id])
   end
 end
