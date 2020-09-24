@@ -25,9 +25,10 @@
       <h5 class="my-0 mr-md-auto font-weight-normal d-flex flex-column flex-md-row align-items-center"><img style="height: 50px;" src='<%= asset_path("rainbow-logo.png") %>' /><%= link_to "Alternativa Solidaria", root_path, class: 'p-2 text-dark title text-decoration-none' %></h5>
       <nav class="my-2 my-md-0 mr-md-3">
         <% if current_user&.admin? %>
-          <%= link_to "Colaboradores", users_path, class: 'btn btn-info' %>
           <%= link_to "Equipos", teams_path, class: 'btn btn-info' %>
+          <%= link_to "Zonas", zones_path, class: 'btn btn-info' %>
           <%= link_to "Destinos", destinations_path, class: 'btn btn-info' %>
+          <%= link_to "Colaboradores", users_path, class: 'btn btn-info' %>
         <% else %>
           <a class="p-2 text-dark" href="#who-we-are">Quienes Somos</a>
           <a class="p-2 text-dark" href="#how-we-do-it">Como Funcionamos</a>

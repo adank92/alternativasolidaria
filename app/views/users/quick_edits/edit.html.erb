@@ -1,0 +1,16 @@
+<div class="card shadow rounded">
+  <h4 class="card-header">Datos de colaboración de <%= @user.name %></h4>
+  <div class="card-body">
+    <%= bootstrap_form_for(@user, url: users_quick_edit_path(@user.quick_edit_token), method: :patch) do |f| %>
+      <div class="form-row">
+        <%= f.collection_check_boxes :roles, User.roles.humans, :first, :second, wrapper: { class: 'col' } %>
+        <%= f.collection_check_boxes :available_day_ids, AvailableDay.for_current_month, :id, :short_date, wrapper: { class: 'col' } %>
+      </div>
+      <div class="form-row">
+        <div class="form-group col">
+          <%= f.submit 'Actualizar', class: "btn btn-primary mt-3" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

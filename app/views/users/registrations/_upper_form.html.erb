@@ -17,5 +17,5 @@
 </div>
 <div class="form-row">
   <%= f.collection_check_boxes :roles, User.roles.humans, :first, :second, wrapper: { class: 'col' } %>
-  <%= f.collection_check_boxes :week_ids, Week.for_current_month, :id, :name, wrapper: { class: 'col' } %>
+  <%= f.collection_check_boxes :available_day_ids, AvailableDay.for_current_month, :id, :short_date, wrapper: { class: 'col' } %>
 </div>

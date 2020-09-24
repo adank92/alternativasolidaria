@@ -1,0 +1,15 @@
+<%= bootstrap_form_for(@zone) do |f| %>
+  <div class="form-row">
+    <%= f.text_field :name, wrapper: { class: 'col' } %>
+  </div>
+  <div data-controller="province" data-province-locations-url="<%= localities_path %>">
+    <div class="form-row">
+      <%= f.collection_check_boxes :locality_ids, Locality.all, :id, :name, wrapper: { class: 'col' } %>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col">
+      <%= f.submit 'Guardar', class: "btn btn-primary mt-3" %>
+    </div>
+  </div>
+<% end %>

@@ -10,18 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_23_032026) do
+ActiveRecord::Schema.define(version: 2020_09_24_034305) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "available_weeks", force: :cascade do |t|
-    t.integer "user_id", null: false
+  create_table "quick_edits", force: :cascade do |t|
+    t.date "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "week_id", null: false
-    t.index ["user_id"], name: "index_available_weeks_on_user_id"
-    t.index ["week_id"], name: "index_available_weeks_on_week_id"
+    t.index ["date"], name: "index_available_days_on_date", unique: true
+  end
+
+  create_table "available_days_users", id: false, force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "available_day_id", null: false
   end
 
   create_table "collaborations", force: :cascade do |t|
@@ -61,6 +64,11 @@ ActiveRecord::Schema.define(version: 2020_09_23_032026) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["department_id"], name: "index_localities_on_department_id"
+  end
+
+  create_table "localities_zones", id: false, force: :cascade do |t|
+    t.bigint "zone_id", null: false
+    t.bigint "locality_id", null: false
   end
 
   create_table "provinces", force: :cascade do |t|
@@ -105,21 +113,18 @@ ActiveRecord::Schema.define(version: 2020_09_23_032026) do
     t.integer "locality_id", null: false
     t.bigint "roles", default: 0, null: false
     t.integer "status", default: 0
+    t.string "quick_edit_token"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["locality_id"], name: "index_users_on_locality_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "weeks", force: :cascade do |t|
-    t.integer "number"
-    t.integer "year"
+  create_table "zones", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["number", "year"], name: "index_weeks_on_number_and_year", unique: true
   end
 
-  add_foreign_key "available_weeks", "users"
-  add_foreign_key "available_weeks", "weeks"
   add_foreign_key "collaborations", "teams"
   add_foreign_key "collaborations", "users"
   add_foreign_key "departments", "provinces"

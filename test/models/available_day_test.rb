@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class WeekTest < ActiveSupport::TestCase
+class AvailableDayTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

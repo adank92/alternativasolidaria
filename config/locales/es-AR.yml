@@ -28,8 +28,8 @@ es-AR:
         password_confirmation: Confirmar contraseña
         current_password: Contraseña actual
         remember_me: Recuerdame
-        week_ids: Fines de semana con disponibilidad
         status: Estado
+        available_day_ids: Días del mes con disponibilidad
       team:
         name: Nombre
         pick_up_date: Fecha
@@ -44,6 +44,9 @@ es-AR:
         locality_id: Localidad
         address: Dirección
         phone: Número de teléfono
+      zone:
+        name: Nombre
+        locality_ids: Localidades
     enums:
       user:
         status:
