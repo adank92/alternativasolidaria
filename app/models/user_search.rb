@@ -1,11 +1,12 @@
 class UserSearch
   include ActiveModel::Model
-  attr_accessor :status, :week, :role, :province_id, :department_id, :locality_id, :text, :departments, :localities,
-                :page
+  attr_accessor :status, :day, :role, :province_id, :department_id, :locality_id, :text, :departments, :localities,
+                :zone_id, :page
 
   def execute
-    User.where_status(status).available_for_week(week).where_role(role).where_province(province_id)
-        .where_department(department_id).where_locality(locality_id).search(text).includes(:department, :locality, :province)
+    User.where_status(status).available_at(day).where_role(role).where_province(province_id)
+        .where_department(department_id).where_locality(locality_id).where_zone(zone_id).search(text)
+        .includes(:department, :locality, :province)
   end
 
   def province

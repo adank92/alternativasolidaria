@@ -5,8 +5,6 @@ es-AR:
       team_search:
         pick_up_date: Fecha de retiro
         text: Nombre
-      team_template_search:
-        text: Nombre
   activerecord:
     errors:
       messages:
@@ -30,17 +28,14 @@ es-AR:
         password_confirmation: Confirmar contraseña
         current_password: Contraseña actual
         remember_me: Recuerdame
-        week_ids: Fines de semana con disponibilidad
         status: Estado
+        available_day_ids: Días del mes con disponibilidad
       team:
         name: Nombre
         pick_up_date: Fecha
         pick_up_time_range: Rango horario
         distributors: Distribuidores
         intermediate_destination: Destino intermedio
-        notes: Notas
-      team_template:
-        name: Nombre
         notes: Notas
       destination:
         name: Nombre
@@ -49,6 +44,9 @@ es-AR:
         locality_id: Localidad
         address: Dirección
         phone: Número de teléfono
+      zone:
+        name: Nombre
+        locality_ids: Localidades
     enums:
       user:
         status:

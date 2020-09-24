@@ -1,2 +1,0 @@
-module TeamTemplates::TeamDestinationsHelper
-end
