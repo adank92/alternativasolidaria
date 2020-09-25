@@ -11,7 +11,7 @@
     <%= bootstrap_form_for @search, as: :search, url: teams_path do |f| %>
       <div class="form-row">
         <%= f.hidden_field :page %>
-        <%= f.text_field :text, placeholder: 'Buscar...', data: { controller: "tabular", action: 'input->tabular#search' } %>
+        <%= f.text_field :text, placeholder: 'Buscar...', data: { controller: "tabular", action: 'input->tabular#search' }, wrapper: { class: 'col-2' } %>
       </div>
 
       <div class="row">

@@ -3,6 +3,6 @@ class ZoneSearch
   attr_accessor :text, :page
 
   def execute
-    Zone.all
+    Zone.search(text)
   end
 end

@@ -5,6 +5,8 @@ es-AR:
       team_search:
         pick_up_date: Fecha de retiro
         text: Nombre
+      zone_search:
+        text: Búsqueda
   activerecord:
     errors:
       messages:
