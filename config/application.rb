@@ -17,6 +17,7 @@ module Solidaria
     # the framework and any gems in your application.
 
     config.action_mailer.default_url_options = { host: 'alternativasolidaria.com.ar' }
+    config.action_mailer.asset_host = 'https://alternativasolidaria.com.ar'
     config.i18n.available_locales = 'es-AR'
     config.i18n.default_locale = 'es-AR'
   end
