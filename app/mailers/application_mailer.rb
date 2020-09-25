@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'notificaciones@mg.alternativasolidaria.com.ar'
+  default from: '"Alternativa Solidaria" <notificaciones@mg.alternativasolidaria.com.ar>'
   layout 'mailer'
 end
