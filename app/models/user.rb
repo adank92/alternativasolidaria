@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  include QuickEditable
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   enum status: [:fresh, :active, :inactive]
@@ -8,8 +10,13 @@ class User < ApplicationRecord
   has_one :department, through: :locality
   has_one :province, through: :department
   has_many :zones, through: :locality
-  has_and_belongs_to_many :teams
+  has_many :collaborations
+  has_many :teams, through: :collaborations
   has_and_belongs_to_many :available_days
+
+  delegate :name, to: :locality, prefix: :locality
+  delegate :name, to: :department, prefix: :department
+  delegate :name, to: :province, prefix: :province
 
   validates_presence_of :name, :roles, :address
   validates :phone, numericality: true
@@ -29,14 +36,5 @@ class User < ApplicationRecord
 
   def collaboration_roles
     roles.flat_map { |r| r == :distributor ? [:drop_off, :pick_up] : r }
-  end
-
-  def send_quick_edit_email
-    update(quick_edit_token: SecureRandom.alphanumeric(30))
-    UserMailer.with(user: self, token: quick_edit_token).quick_edit_email.deliver_now
-  end
-
-  def clear_quick_edit_token
-    update(quick_edit_token: nil)
   end
 end

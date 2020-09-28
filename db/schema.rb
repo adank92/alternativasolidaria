@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_24_034305) do
+ActiveRecord::Schema.define(version: 2020_09_28_003736) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "quick_edits", force: :cascade do |t|
+  create_table "available_days", force: :cascade do |t|
     t.date "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2020_09_24_034305) do
   end
 
   create_table "collaborations", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.bigint "user_id"
     t.bigint "team_id", null: false
     t.string "role"
     t.integer "meal_quantity"
@@ -126,7 +126,7 @@ ActiveRecord::Schema.define(version: 2020_09_24_034305) do
   end
 
   add_foreign_key "collaborations", "teams"
-  add_foreign_key "collaborations", "users"
+  add_foreign_key "collaborations", "users", on_delete: :nullify
   add_foreign_key "departments", "provinces"
   add_foreign_key "destinations", "localities"
   add_foreign_key "localities", "departments"

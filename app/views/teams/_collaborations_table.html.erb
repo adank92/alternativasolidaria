@@ -31,16 +31,20 @@
   <% collaborations.each do |c| %>
     <tr>
       <td>
-        <%= link_to c.user.name, edit_user_path(c.user) %>
+        <% if c.user.persisted? %>
+          <%= link_to c.user.name, edit_user_path(c.user) %>
+        <% else %>
+          <%= c.user.name %>
+        <% end %>
       </td>
       <td>
-        <%= c.user.province.name %>
+        <%= c.user.province_name %>
       </td>
       <td>
-        <%= c.user.department.name %>
+        <%= c.user.department_name %>
       </td>
       <td>
-        <%= c.user.locality.name %>
+        <%= c.user.locality_name %>
       </td>
       <td>
         <%= c.user.address %>

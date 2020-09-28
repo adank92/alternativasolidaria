@@ -3,7 +3,7 @@
     <div class="col-12">
       <div class="form-group mb-2 d-md-inline-flex d-sm-flex">
         <%= f.hidden_field :page %>
-        <%= f.select :status, options_for_reflex_select(status_options, :first, :last, @search.status, prompt: "Todas los estados"), {}, { data: { reflex: 'change->Tabular#submit' }, class:'form-control form-control-sm mr-md-2 mb-2' } %>
+        <%= f.select :status, options_for_reflex_select(status_options, :first, :last, @search.status, prompt: "Activos o nuevos"), {}, { data: { reflex: 'change->Tabular#submit' }, class:'form-control form-control-sm mr-md-2 mb-2' } %>
         <%= f.select :day, options_for_reflex_select(AvailableDay.for_current_month, :date, :short_date, @search.day, prompt: "Todas los dias"), {}, { data: { reflex: 'change->Tabular#submit' }, class:'form-control form-control-sm mr-md-2 mb-2' } %>
         <%= f.select :role, options_for_reflex_select(User.roles.humans, :first, :second, @search.role, prompt: "Todos los roles"), {}, { data: { reflex: 'change->Tabular#submit' }, class:'form-control form-control-sm mr-md-2 mb-2' } %>
         <%= f.select :province_id, options_for_reflex_select(@search.provinces, :id, :name, @search.province_id, prompt: "Todas las provincias"), {}, { data: { reflex: 'change->Tabular#submit' }, class:'form-control form-control-sm mr-md-2 mb-2' } %>
