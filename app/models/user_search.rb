@@ -7,14 +7,13 @@ class UserSearch
                 :zone_id, :page
 
   def execute
-    User.where_status(status).available_at(day).where_role(role).where_province(province_id)
+    User.where_status(status_or_default).available_at(day).where_role(role).where_province(province_id)
         .where_department(department_id).where_locality(locality_id).where_zone(zone_id).search(text)
         .includes(:department, :locality, :province)
   end
 
-  def status
-    return DEFAULT_STATUSES if @status.blank?
-    @status
+  def status_or_default
+    @status.presence || DEFAULT_STATUSES
   end
 
   def province
