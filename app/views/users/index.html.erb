@@ -1,25 +1,19 @@
 <% content_for(:container) { 'container-fluid' } %>
-<%= form_with model: @search, scope: :search, url: users_path do |f| %>
-  <div class="row">
-    <div class="col-12">
-      <div class="form-group mb-2 d-md-inline-flex d-sm-flex">
-        <%= f.hidden_field :page %>
-        <%= f.select :status, options_for_reflex_select(status_options, :first, :last, @search.status, prompt: "Activos o nuevos"), {}, { data: { reflex: 'change->Tabular#submit' }, class:'form-control form-control-sm mr-md-2 mb-2' } %>
-        <%= f.select :day, options_for_reflex_select(AvailableDay.for_current_month, :date, :short_date, @search.day, prompt: "Todas los dias"), {}, { data: { reflex: 'change->Tabular#submit' }, class:'form-control form-control-sm mr-md-2 mb-2' } %>
-        <%= f.select :role, options_for_reflex_select(User.roles.humans, :first, :second, @search.role, prompt: "Todos los roles"), {}, { data: { reflex: 'change->Tabular#submit' }, class:'form-control form-control-sm mr-md-2 mb-2' } %>
-        <%= f.select :province_id, options_for_reflex_select(@search.provinces, :id, :name, @search.province_id, prompt: "Todas las provincias"), {}, { data: { reflex: 'change->Tabular#submit' }, class:'form-control form-control-sm mr-md-2 mb-2' } %>
-        <%= f.select :department_id, options_for_reflex_select(@search.departments, :id, :name, @search.department_id, prompt: "Todas las zonas"), {}, { data: { reflex: 'change->Tabular#submit' }, class:'form-control form-control-sm mr-md-2 mb-2' } %>
-        <%= f.select :locality_id, options_for_reflex_select(@search.localities, :id, :name, @search.locality_id, prompt: "Todas las localidades"), {}, { data: { reflex: 'change->Tabular#submit' }, class:'form-control form-control-sm mr-md-2 mb-2' } %>
-        <%= f.select :zone_id, options_for_reflex_select(Zone.all, :id, :name, @search.zone_id, prompt: "Todas las zonas"), {}, { data: { reflex: 'change->Tabular#submit' }, class:'form-control form-control-sm mr-md-2 mb-2' } %>
-      </div>
-    </div>
+<%= bootstrap_form_for @search, as: :search, url: users_path do |f| %>
+  <div class="form-row">
+    <%= f.hidden_field :page %>
+    <%= f.select :status, options_for_reflex_select(status_options, :first, :last, @search.status, prompt: "Activos o nuevos"), { wrapper: { class: 'col' }, hide_label: true }, { data: { reflex: 'change->Tabular#submit' }, class: 'form-control-sm' } %>
+    <%= f.select :day, options_for_reflex_select(AvailableDay.for_current_month, :date, :short_date, @search.day, prompt: "Todas los dias"), { wrapper: { class: 'col' }, hide_label: true }, { data: { reflex: 'change->Tabular#submit' }, class: 'form-control-sm' } %>
+    <%= f.select :role, options_for_reflex_select(User.roles.humans, :first, :second, @search.role, prompt: "Todos los roles"), { wrapper: { class: 'col' }, hide_label: true }, { data: { reflex: 'change->Tabular#submit' }, class: 'form-control-sm' } %>
+    <%= f.select :province_id, options_for_reflex_select(@search.provinces, :id, :name, @search.province_id, prompt: "Todas las provincias"), { wrapper: { class: 'col' }, hide_label: true }, { data: { reflex: 'change->Tabular#submit' }, class: 'form-control-sm' } %>
+    <%= f.select :department_id, options_for_reflex_select(@search.departments, :id, :name, @search.department_id, prompt: "Todas los departamentos"), { wrapper: { class: 'col' }, hide_label: true }, { data: { reflex: 'change->Tabular#submit' }, class: 'form-control-sm' } %>
+    <%= f.select :locality_id, options_for_reflex_select(@search.localities, :id, :name, @search.locality_id, prompt: "Todas las localidades"), { wrapper: { class: 'col' }, hide_label: true }, { data: { reflex: 'change->Tabular#submit' }, class: 'form-control-sm' } %>
+    <%= f.select :zone_id, options_for_reflex_select(Zone.all, :id, :name, @search.zone_id, prompt: "Todas las zonas"), { wrapper: { class: 'col' }, hide_label: true }, { data: { reflex: 'change->Tabular#submit' }, class: 'form-control-sm' } %>
   </div>
 
-  <div class="row">
-    <div class="col-md-4 col-sm-12">
-      <%= f.text_field :text, placeholder: 'Buscar...', class: 'form-control form-control-sm',
-                       data: { controller: "tabular", action: 'input->tabular#search' } %>
-    </div>
+  <div class="form-row">
+    <%= f.text_field :text, placeholder: 'Buscar...', data: { controller: "tabular", action: 'input->tabular#search' }, wrapper: { class: 'col-4' }, class: 'form-control-sm', hide_label: true %>
+    <%= f.check_box :not_quick_edited, data: { reflex: 'change->Tabular#submit' } %>
   </div>
 
   <div class="row">

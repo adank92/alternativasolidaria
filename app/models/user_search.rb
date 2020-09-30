@@ -4,11 +4,11 @@ class UserSearch
   DEFAULT_STATUSES = [:fresh, :active].freeze
 
   attr_accessor :status, :day, :role, :province_id, :department_id, :locality_id, :text, :departments, :localities,
-                :zone_id, :page
+                :zone_id, :page, :not_quick_edited
 
   def execute
     User.where_status(status_or_default).available_at(day).where_role(role).where_province(province_id)
-        .where_department(department_id).where_locality(locality_id).where_zone(zone_id).search(text)
+        .where_department(department_id).where_locality(locality_id).where_zone(zone_id).not_quick_edited(not_quick_edited).search(text)
         .includes(:department, :locality, :province)
   end
 

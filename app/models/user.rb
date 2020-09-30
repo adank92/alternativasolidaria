@@ -28,6 +28,7 @@ class User < ApplicationRecord
   scope :where_province, ->(province) { joins(:province).where(provinces: { id: province }) if province.present? }
   scope :where_department, ->(department) { joins(:department).where(departments: { id: department }) if department.present? }
   scope :where_zone, ->(zone) { joins(:zones).where(zones: { id: zone }) if zone.present? }
+  scope :not_quick_edited, ->(not_quick_edited) { where.not(quick_edit_token: nil) if not_quick_edited.present? }
   scope :search, ->(query) {
     return unless query.present?
     query = sanitize_sql_like(query)

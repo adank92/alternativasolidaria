@@ -7,6 +7,8 @@ es-AR:
         text: Nombre
       zone_search:
         text: Búsqueda
+      user_search:
+        not_quick_edited: Usuarios sin information
   activerecord:
     errors:
       messages:
