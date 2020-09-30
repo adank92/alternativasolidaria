@@ -3,7 +3,7 @@
   <div class="form-row">
     <%= f.hidden_field :page %>
     <%= f.select :status, options_for_reflex_select(status_options, :first, :last, @search.status, prompt: "Activos o nuevos"), { wrapper: { class: 'col' }, hide_label: true }, { data: { reflex: 'change->Tabular#submit' }, class: 'form-control-sm' } %>
-    <%= f.select :day, options_for_reflex_select(AvailableDay.for_current_month, :date, :short_date, @search.day, prompt: "Todas los dias"), { wrapper: { class: 'col' }, hide_label: true }, { data: { reflex: 'change->Tabular#submit' }, class: 'form-control-sm' } %>
+    <%= f.select :day, options_for_reflex_select(AvailableDay.for_current_month, :id, :short_date, @search.day, prompt: "Todas los dias"), { wrapper: { class: 'col' }, hide_label: true }, { data: { reflex: 'change->Tabular#submit' }, class: 'form-control-sm' } %>
     <%= f.select :role, options_for_reflex_select(User.roles.humans, :first, :second, @search.role, prompt: "Todos los roles"), { wrapper: { class: 'col' }, hide_label: true }, { data: { reflex: 'change->Tabular#submit' }, class: 'form-control-sm' } %>
     <%= f.select :province_id, options_for_reflex_select(@search.provinces, :id, :name, @search.province_id, prompt: "Todas las provincias"), { wrapper: { class: 'col' }, hide_label: true }, { data: { reflex: 'change->Tabular#submit' }, class: 'form-control-sm' } %>
     <%= f.select :department_id, options_for_reflex_select(@search.departments, :id, :name, @search.department_id, prompt: "Todas los departamentos"), { wrapper: { class: 'col' }, hide_label: true }, { data: { reflex: 'change->Tabular#submit' }, class: 'form-control-sm' } %>
@@ -13,7 +13,7 @@
 
   <div class="form-row">
     <%= f.text_field :text, placeholder: 'Buscar...', data: { controller: "tabular", action: 'input->tabular#search' }, wrapper: { class: 'col-4' }, class: 'form-control-sm', hide_label: true %>
-    <%= f.check_box :not_quick_edited, data: { reflex: 'change->Tabular#submit' } %>
+    <%= f.check_box :not_available_for_current_month, data: { reflex: 'change->Tabular#submit' } %>
   </div>
 
   <div class="row">

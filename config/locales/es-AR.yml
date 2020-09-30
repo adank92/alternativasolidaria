@@ -8,7 +8,7 @@ es-AR:
       zone_search:
         text: Búsqueda
       user_search:
-        not_quick_edited: Usuarios sin information
+        not_available_for_current_month: Usuarios sin information
   activerecord:
     errors:
       messages:
