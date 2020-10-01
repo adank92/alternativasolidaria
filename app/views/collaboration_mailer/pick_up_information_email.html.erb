@@ -1,119 +1,63 @@
 <p>
-  Hola <%= @user.name %>, las viandas hay que retirarlas el <b><%= l(@team.pick_up_date, format: :medium) %>, <%= @team.pick_up_time_range %></b>. Esta es la lista de cocineros:
+  Hola <%= @user.name %>, las viandas hay que retirarlas el <b><%= l(@team.pick_up_date, format: :medium) %>, <%= @team.pick_up_time_range %></b>. Esta es la lista de <strong>cocineros</strong>:
 </p>
 
-<table cellpadding="5px" border=”1”>
-  <thead>
-    <tr>
-      <th>
-        Nombre
-      </th>
-      <th>
-        Localidad
-      </th>
-      <th>
-        Dirección
-      </th>
-      <th>
-        Celular
-      </th>
-      <th>
-        Viandas
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @team.chef_collaborations.each do |c| %>
-      <tr>
-        <td><%= c.user.name %></td>
-        <td><%= c.user.locality.name %></td>
-        <td><%= c.user.address %></td>
-        <td><%= c.user.phone %></td>
-        <td><%= c.meal_quantity %></td>
-      </tr>
-    <% end %>
-  </tbody>
-  <tfoot>
-    <tr>
-      <th colspan="3">
-      </th>
-      <th>
-        Total
-      </th>
-      <th>
-        <%= @team.chef_collaborations.sum(:meal_quantity) %>
-      </th>
-    </tr>
-  </tfoot>
-</table>
-
-<p>
-  Estos son los destinos:
-</p>
-
-<% if @team.intermediate_destination.present? %>
-  <p><%= @team.intermediate_destination %></p>
-<% else %>
-  <table cellpadding="5px" border=”1”>
+<% @team.chef_collaborations.each do |c| %>
+  <table class="content-table">
     <thead>
       <tr>
-        <th>
-          Nombre
-        </th>
-        <th>
-          Zona/Comuna
-        </th>
-        <th>
-          Localidad
-        </th>
-        <th>
-          Dirección
-        </th>
-        <th>
-          Celular
-        </th>
-        <th>
-          Viandas
-        </th>
+        <th colspan=2 style="background: lightblue;"><%= c.user.name %> (<%= c.meal_quantity %> viandas)</th>
       </tr>
     </thead>
     <tbody>
-    <% @team.team_destinations.each do |td| %>
-      <tr>
-        <td>
-          <%= td.destination.name %>
-        </td>
-        <td>
-          <%= td.destination.department.name %>
-        </td>
-        <td>
-          <%= td.destination.locality.name %>
-        </td>
-        <td>
-          <%= td.destination.address %>
-        </td>
-        <td>
-          <%= td.destination.phone %>
-        </td>
-        <td>
-          <%= td.meal_quantity %>
-        </td>
-      </tr>
-    <% end %>
+        <tr>
+          <td>Dirección</td>
+          <td><%= c.user.address %> (<%= c.user.locality.name %>)</td>
+        </tr>
+         <tr>
+          <td>Teléfono</td>
+          <td><%= c.user.phone %></td>
+        </tr>
     </tbody>
-    <tfoot>
-      <tr>
-        <th colspan="4">
-        </th>
-        <th>
-          Total
-        </th>
-        <th>
-          <%= @team.team_destinations.sum(:meal_quantity) %>
-        </th>
-      </tr>
-    </tfoot>
   </table>
+  <br>
+<% end %>
+
+<span>Total viandas: <%= @team.chef_collaborations.sum(:meal_quantity) %></span>
+
+<hr>
+
+<p>
+  Estos son los <strong>destinos</strong>:
+</p>
+
+<% if @team.intermediate_destination.present? %>
+  <p><strong><%= @team.intermediate_destination %></strong></p>
+<% else %>
+  <% @team.team_destinations.each do |td| %>
+    <table class="content-table">
+        <thead>
+          <tr>
+            <th colspan="2" style="background: #ade6c9"><%= td.destination.name %> (<%= td.meal_quantity %> viandas)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Dirección</td>
+            <td>
+              <%= td.destination.address%> (<%= td.destination.locality.name %>)
+            </td>
+          </tr>
+          <tr>
+            <td>Teléfono</td>
+            <td>
+              <%= td.destination.phone %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+  <% end %>
 <% end %>
 <p>
   ¡Muchas gracias por tu colaboración!
