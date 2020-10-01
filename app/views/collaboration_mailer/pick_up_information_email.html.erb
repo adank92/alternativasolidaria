@@ -1,7 +1,7 @@
 <p>
   Hola <%= @user.name %>, las viandas hay que retirarlas el <b><%= l(@team.pick_up_date, format: :medium) %>, <%= @team.pick_up_time_range %></b>. Esta es la lista de cocineros:
 </p>
-<br>
+
 <table cellpadding="5px" border=”1”>
   <thead>
     <tr>
@@ -46,10 +46,77 @@
     </tr>
   </tfoot>
 </table>
-<br>
+
+<p>
+  Estos son los destinos:
+</p>
+
+<% if @team.intermediate_destination.present? %>
+  <p><%= @team.intermediate_destination %></p>
+<% else %>
+  <table cellpadding="5px" border=”1”>
+    <thead>
+      <tr>
+        <th>
+          Nombre
+        </th>
+        <th>
+          Zona/Comuna
+        </th>
+        <th>
+          Localidad
+        </th>
+        <th>
+          Dirección
+        </th>
+        <th>
+          Celular
+        </th>
+        <th>
+          Viandas
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @team.team_destinations.each do |td| %>
+      <tr>
+        <td>
+          <%= td.destination.name %>
+        </td>
+        <td>
+          <%= td.destination.department.name %>
+        </td>
+        <td>
+          <%= td.destination.locality.name %>
+        </td>
+        <td>
+          <%= td.destination.address %>
+        </td>
+        <td>
+          <%= td.destination.phone %>
+        </td>
+        <td>
+          <%= td.meal_quantity %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th colspan="4">
+        </th>
+        <th>
+          Total
+        </th>
+        <th>
+          <%= @team.team_destinations.sum(:meal_quantity) %>
+        </th>
+      </tr>
+    </tfoot>
+  </table>
+<% end %>
 <p>
   ¡Muchas gracias por tu colaboración!
-</p>
-<p>
+  <br>
   Alternativa Solidaria.
 </p>

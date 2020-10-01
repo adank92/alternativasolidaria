@@ -1,4 +1,6 @@
 class CollaborationMailer < ApplicationMailer
+  layout 'mailer_fluid'
+
   def pick_up_information_email
     @team = params[:team]
     @user = params[:user]
