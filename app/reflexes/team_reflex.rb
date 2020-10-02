@@ -3,11 +3,14 @@
 class TeamReflex < ApplicationReflex
   before_reflex do
     @team = find_team
-    @team.assign_attributes(team_params)
   end
 
   def submit
-    @team.save
+    @team.update(team_params)
+  end
+
+  def send_pick_up_information
+    @team.send_pick_up_email
   end
 
   private

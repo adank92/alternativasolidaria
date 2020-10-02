@@ -2,19 +2,43 @@
   <div class="form-row">
     <%= f.text_field :name, wrapper: { class: 'col' }, data: { reflex: 'change->Team#submit' } %>
   </div>
-  <h5 class="mb-3">Cocinan</h5>
+  <div class="d-flex align-items-center my-3">
+    <h5 class="mb-0">Cocinan</h5>
+    <%= link_to team_collaborations_path(@team), class: "ml-auto" do %>
+      <i class="fas fa-edit fa-lg"></i>
+    <% end %>
+  </div>
   <div class="form-row">
     <div class="form-group col">
       <%= render 'collaborations_table', f: f, collaborations: @team.chef_collaborations %>
     </div>
   </div>
-  <h5 class="mb-3">Entregan</h5>
+  <div class="d-flex align-items-center my-3">
+    <h5 class="mb-0">Entregan</h5>
+    <%= link_to team_collaborations_path(@team), class: "ml-auto" do %>
+      <i class="fas fa-edit fa-lg"></i>
+    <% end %>
+  </div>
   <div class="form-row">
     <div class="form-group col">
       <%= render 'collaborations_table', f: f, collaborations: @team.drop_off_collaborations %>
     </div>
   </div>
-  <h5 class="mb-3">Retiran</h5>
+  <div class="d-flex align-items-center my-3">
+    <h5 class="mb-0">Retiran</h5>
+    <div class="ml-auto">
+      <% if @team.can_send_pick_up_email? %>
+        <% if team.pick_up_email_sent? %>
+          <%= link_to '<i class="fas fa-paper-plane fa-lg"></i>'.html_safe, '#', class: 'mr-2 text-success', title: 'Reenviar email', data: { reflex: 'click->Team#send_pick_up_information'} %>
+        <% else %>
+          <%= link_to '<i class="far fa-paper-plane fa-lg"></i>'.html_safe, '#', class: 'mr-2', title: 'Enviar email', data: { reflex: 'click->Team#send_pick_up_information'} %>
+    <% end %>
+      <% end %>
+      <%= link_to team_collaborations_path(@team) do %>
+        <i class="fas fa-edit fa-lg"></i>
+      <% end %>
+    </div>
+  </div>
   <div class="form-row">
     <%= f.date_field :pick_up_date, wrapper: { class: 'col' }, data: { reflex: 'change->Team#submit' } %>
     <%= f.text_field :pick_up_time_range, wrapper: { class: 'col' }, data: { reflex: 'change->Team#submit' } %>
@@ -24,13 +48,18 @@
       <%= render 'collaborations_table', f: f, collaborations: @team.pick_up_collaborations %>
     </div>
   </div>
-  <h5 class="mb-3">Destinos</h5>
+  <div class="d-flex align-items-center my-3">
+    <h5 class="mb-0">Destinos</h5>
+    <%= link_to team_team_destinations_path(@team), class: "ml-auto" do %>
+      <i class="fas fa-edit fa-lg"></i>
+    <% end %>
+  </div>
   <div class="form-row">
     <div class="form-group col">
       <%= render 'team_destinations_table', f: f, team_destinations: @team.team_destinations %>
     </div>
   </div>
-  <div class="form-row">
+  <div class="form-row mt-3">
     <%= f.text_area :intermediate_destination, wrapper: { class: 'col' }, data: { reflex: 'change->Team#submit' } %>
     <%= f.text_area :notes, wrapper: { class: 'col' }, data: { reflex: 'change->Team#submit' } %>
   </div>

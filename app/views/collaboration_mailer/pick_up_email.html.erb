@@ -1,5 +1,5 @@
 <p>
-  Hola <%= @user.name %>, las viandas hay que retirarlas el <b><%= l(@team.pick_up_date, format: :medium) %>, <%= @team.pick_up_time_range %></b>. Esta es la lista de <strong>cocineros</strong>:
+  Hola <%= @user.name %>, las viandas hay que retirarlas el <b><%= l(@team.pick_up_date, format: :short) %>, <%= @team.pick_up_time_range %></b>. Esta es la lista de <strong>cocineros</strong>:
 </p>
 
 <% @team.chef_collaborations.each do |c| %>

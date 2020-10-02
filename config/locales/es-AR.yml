@@ -91,8 +91,7 @@ es-AR:
     formats:
       default: "%d/%m/%Y"
       long: "%A, %d de %B de %Y"
-      short: "%a %d de %b"
-      medium: "%A %d de %B"
+      short: "%A %d de %B"
     month_names:
     - 
     - enero
