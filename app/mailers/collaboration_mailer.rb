@@ -1,9 +1,9 @@
 class CollaborationMailer < ApplicationMailer
-  layout 'mailer_fluid'
+  layout 'mailer'
 
   def pick_up_email
     @team = params[:team]
     @user = params[:user]
-    mail(bcc: @team.pick_up_collaborators.pluck(:email), subject: 'Recorrido de retiro')
+    mail(to: @team.pick_up_collaborators.pluck(:email), subject: 'Recorrido de retiro')
   end
 end
