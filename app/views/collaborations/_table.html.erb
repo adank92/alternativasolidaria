@@ -65,7 +65,7 @@
           <% @records.each do |user| %>
             <tr id="<%= dom_id(user) %>">
               <td>
-                <div class="d-flex justify-content-between">
+                <div class="d-flex align-items-center justify-content-between">
                   <%= status_icon(user.status) %>
                   <% user.collaboration_roles.each do |role| %>
                     <% if @team.has_collaborator?(user, as: role) %>

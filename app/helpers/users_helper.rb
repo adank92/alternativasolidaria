@@ -6,21 +6,21 @@ module UsersHelper
   end
 
   def status_icon(status)
-    return ("<i class='fas fa-user-plus text-primary' title='Nuevo'></i>").html_safe if status == 'fresh'
-    return ("<i class='fas fa-user-check text-success' title='Activo'></i>").html_safe if status == 'active'
-    ("<i class='fas fa-user-times text-danger' title='Inactivo'></i>").html_safe
+    return ("<i class='fas fa-user-plus fa-lg text-primary' title='Nuevo'></i>").html_safe if status == 'fresh'
+    return ("<i class='fas fa-user-check fa-lg text-success' title='Activo'></i>").html_safe if status == 'active'
+    ("<i class='fas fa-user-times fa-lg text-danger' title='Inactivo'></i>").html_safe
   end
 
   def role_icon(role, color = '')
     case role
     when :chef
-      ("<i class='fas fa-pizza-slice #{color}' style='font-size: 1.5em' title='Cocina'></i>").html_safe
+      ("<i class='fas fa-pizza-slice fa-lg #{color}' title='Cocina'></i>").html_safe
     when :distributor
-      ("<i class='fas fa-truck #{color}' style='font-size: 1.5em' title='Reparte'></i>").html_safe
+      ("<i class='fas fa-truck fa-lg #{color}' title='Reparte'></i>").html_safe
     when :drop_off
-      ("<i class='fas fa-box-open #{color}' style='font-size: 1.5em' title='Entrega'></i>").html_safe
+      ("<i class='fas fa-box-open fa-lg #{color}' title='Entrega'></i>").html_safe
     when :pick_up
-      ("<i class='fas fa-box #{color}' style='font-size: 1.5em' title='Retira'></i>").html_safe
+      ("<i class='fas fa-box fa-lg #{color}' title='Retira'></i>").html_safe
     else
       ''
     end
