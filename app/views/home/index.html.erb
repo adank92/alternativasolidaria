@@ -77,36 +77,19 @@
 
   <section class="bg-light text-dark pt-5 pb-5">
     <h1 class="text-center font-weight-bold mb-5">¿A quiénes ayudamos?</h1>
+
     <div class="row ml-5 mr-5">
-      <div class="col-md-3 col-sm-12">
-        <ul>
-          <li>Centro de Jubilados "Actuarte" (La Boca)</li>
-          <li>Comedor Comunitario "Ciudadanitos del Mundo" (La Boca)</li>
-          <li> Asociación Civil "Creando Lazos" (Lanús).</li>
-        </ul>
-      </div>
-      <div class="col-md-3 col-sm-12">
-        <ul>
-          <li>Comedor "San Cayetano" (La Boca)</li>
-          <li>Comedor y Merendero "Rayito de Luz" Barrio Rivadavia (Bajo Flores)</li>
-          <li>Centro Barrial "San Francisco y Santa Clara" (Bajo Flores)</li>
-        </ul>
-      </div>
-      <div class="col-md-3 col-sm-12">
-        <ul>
-          <li>Comedor y Merendero "Mi Luz" (Merlo)</li>
-          <li>Comedor y Merendero "La Hora Feliz" (Moreno)</li>
-          <li>Merendero "Estrellita" (La Boca)</li>
-        </ul>
-      </div>
-      <div class="col-md-3 col-sm-12">
-        <ul>
-          <li>Merendero "Estrellita" (La Boca)</li>
-          <li>Comedor "Azul y Oro" (La Boca)</li>
-          <li>Comedor en espacio "La Chilinga" (Villa Urquiza)</li>
-        </ul>
-      </div>
+      <% Destination.all.each_slice((Destination.count/4.0).ceil) do |chunk| %>
+          <div class="col-md-3 col-sm-12">
+            <ul>
+              <% chunk.each do |destination| %>
+                  <li><%= destination.name %> (<%= destination.locality.name %>)</li>
+              <% end %>
+            </ul>
+          </div>
+      <% end %>
     </div>
+
     <p class="mt-2 text-center merendero-contact">Si tenes un
       <strong>merendero</strong>
       para asistir contactate con nosotros
