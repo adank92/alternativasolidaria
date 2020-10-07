@@ -13,6 +13,6 @@ class CollaborationsController < AdminController
   end
 
   def user_seach_params
-    params.fetch(:search, {}).permit(:status, :day, :role, :province_id, :department_id, :locality_id, :zone_id, :text, :page)
+    params.fetch(:search, {}).permit(:status, :day, :role, :province_id, :locality_id, :zone_id, :text, :page)
   end
 end

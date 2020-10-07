@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_02_024841) do
+ActiveRecord::Schema.define(version: 2020_10_07_040514) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,10 +60,12 @@ ActiveRecord::Schema.define(version: 2020_10_02_024841) do
 
   create_table "localities", force: :cascade do |t|
     t.string "name"
-    t.integer "department_id", null: false
+    t.integer "department_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "province_id"
     t.index ["department_id"], name: "index_localities_on_department_id"
+    t.index ["province_id"], name: "index_localities_on_province_id"
   end
 
   create_table "localities_zones", id: false, force: :cascade do |t|
@@ -130,7 +132,7 @@ ActiveRecord::Schema.define(version: 2020_10_02_024841) do
   add_foreign_key "collaborations", "users", on_delete: :nullify
   add_foreign_key "departments", "provinces"
   add_foreign_key "destinations", "localities"
-  add_foreign_key "localities", "departments"
+  add_foreign_key "localities", "provinces"
   add_foreign_key "team_destinations", "destinations"
   add_foreign_key "team_destinations", "teams"
   add_foreign_key "users", "localities"

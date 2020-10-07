@@ -6,9 +6,6 @@ class NullUser
   def province_name
   end
 
-  def department_name
-  end
-
   def locality_name
   end
 

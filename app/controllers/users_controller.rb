@@ -29,7 +29,7 @@ class UsersController < AdminController
   end
 
   def user_seach_params
-    params.fetch(:search, {}).permit(:status, :day, :role, :province_id, :department_id, :locality_id, :zone_id, :text, :not_available_for_current_month, :page)
+    params.fetch(:search, {}).permit(:status, :day, :role, :province_id, :locality_id, :zone_id, :text, :not_available_for_current_month, :page)
   end
 
   def update_user_params

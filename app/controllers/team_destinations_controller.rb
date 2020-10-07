@@ -13,6 +13,6 @@ class TeamDestinationsController < AdminController
   end
 
   def search_params
-    params.fetch(:search, {}).permit(:name, :address, :province_id, :department_id, :locality_id, :text, :page)
+    params.fetch(:search, {}).permit(:name, :address, :province_id, :locality_id, :text, :page)
   end
 end

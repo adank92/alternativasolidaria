@@ -6,7 +6,6 @@
     <%= f.select :day, options_for_reflex_select(AvailableDay.for_current_month, :id, :short_date, @search.day, prompt: "Todas los dias"), { wrapper: { class: 'col' }, hide_label: true }, { data: { reflex: 'change->Tabular#submit' }, class: 'form-control-sm' } %>
     <%= f.select :role, options_for_reflex_select(User.roles.humans, :first, :second, @search.role, prompt: "Todos los roles"), { wrapper: { class: 'col' }, hide_label: true }, { data: { reflex: 'change->Tabular#submit' }, class: 'form-control-sm' } %>
     <%= f.select :province_id, options_for_reflex_select(@search.provinces, :id, :name, @search.province_id, prompt: "Todas las provincias"), { wrapper: { class: 'col' }, hide_label: true }, { data: { reflex: 'change->Tabular#submit' }, class: 'form-control-sm' } %>
-    <%= f.select :department_id, options_for_reflex_select(@search.departments, :id, :name, @search.department_id, prompt: "Todas los departamentos"), { wrapper: { class: 'col' }, hide_label: true }, { data: { reflex: 'change->Tabular#submit' }, class: 'form-control-sm' } %>
     <%= f.select :locality_id, options_for_reflex_select(@search.localities, :id, :name, @search.locality_id, prompt: "Todas las localidades"), { wrapper: { class: 'col' }, hide_label: true }, { data: { reflex: 'change->Tabular#submit' }, class: 'form-control-sm' } %>
     <%= f.select :zone_id, options_for_reflex_select(Zone.all, :id, :name, @search.zone_id, prompt: "Todas las zonas"), { wrapper: { class: 'col' }, hide_label: true }, { data: { reflex: 'change->Tabular#submit' }, class: 'form-control-sm' } %>
   </div>
@@ -40,9 +39,6 @@
           Provincia
         </th>
         <th scope="col">
-          Zona/Comuna
-        </th>
-        <th scope="col">
           Localidad
         </th>
         <th scope="col">
@@ -74,9 +70,6 @@
           </td>
           <td>
             <%= user.province.name %>
-          </td>
-          <td>
-            <%= user.department.name %>
           </td>
           <td>
             <%= user.locality.name %>

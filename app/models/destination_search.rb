@@ -1,10 +1,9 @@
 class DestinationSearch
   include ActiveModel::Model
-  attr_accessor :name, :address, :province_id, :department_id, :locality_id, :text, :page
+  attr_accessor :name, :address, :province_id, :locality_id, :text, :page
 
   def execute
-    Destination.where_province(province_id).where_department(department_id)
-    .where_locality(locality_id).search(text).includes(:department, :locality, :province)
+    Destination.where_province(province_id).where_locality(locality_id).search(text).includes(:locality, :province)
   end
 
   def province
@@ -13,10 +12,6 @@ class DestinationSearch
 
   def provinces
     Province.all
-  end
-
-  def departments
-    @departments = province&.departments || Department.all
   end
 
   def localities
