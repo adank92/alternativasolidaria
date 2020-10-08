@@ -5,11 +5,11 @@
   </div>
   <div data-controller="province" data-province-locations-url="<%= localities_path %>">
     <div class="form-row">
-      <div class="form-group col">
+      <div class="form-group col-6">
         <%= f.label :province_id, class: 'label' %>
         <%= select_tag :province_id, options_from_collection_for_select(Province.all, :id, :name, f.object.province.id), class: 'form-control selectpicker', data: { target: 'province.provinceId', action: 'province#findLocalities' } %>
       </div>
-      <%= f.collection_select :locality_id, f.object.province.localities, :id, :name, { wrapper: { class: 'col' } }, class: 'selectpicker', data: { target: 'province.localityId', live_search: true } %>
+      <%= f.collection_select :locality_id, f.object.province.localities, :id, :name, { wrapper: { class: 'col-6' } }, class: 'selectpicker', data: { target: 'province.localityId', live_search: true } %>
     </div>
   </div>
   <div class="form-row">
